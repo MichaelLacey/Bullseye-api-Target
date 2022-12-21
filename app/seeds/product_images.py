@@ -1,4 +1,4 @@
-from app.models import db, Product_Image, environment, SCHEMA
+from app.models import db, Product_Images, environment, SCHEMA
 
 
 def seed_product_images():
