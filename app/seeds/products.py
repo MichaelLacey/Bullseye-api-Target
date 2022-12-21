@@ -1,0 +1,51 @@
+from app.models import db, Product, environment, SCHEMA
+
+
+def seed_products():
+    # Add prodcuts into the electronics(1) department
+    viziotv = Product(department_id=1, name='VIZIO 50" Class M6 Series 4K QLED HDR Smart TV with Dolby Vision, Voice Remote and Gaming Engine - M50Q6-J01', price=399.99 , description="Immerse yourself in the infinite possibilities of 4K streaming in award-winning Quantum Color with the all-new VIZIO M-Series 4K HDR Smart TV. Take in a billion colors with contrast and clarity powered by Quantum Color and Dolby Vision HDR, and break new ground in smart streaming. Enjoy the award-winning SmartCast platform loaded with the best selection of built-in apps, an all-new Voice Remote, Bluetooth headphone capability, and unmatched power of the lightning-fast VIZIO IQ Active Processor and V-Gaming engine with the newly-added gaming menu.")
+    google_chromecast = Product(department_id=1, name='Google Chromecast with Google TV (HD) - Snow', price=19.99 , description="Chromecast with Google TV (HD) brings you the entertainment you love, including live TV*, in up to 1080p HDR**. Get personal recommendations based on your subscriptions, viewing history, and content you own - all in one place. No more jumping between apps to decide what to watch. And use the remote to search with your voice.***")
+    vizio_soundbar = Product(department_id=1, name='VIZIO V-Series 5.1 Home Theater Sound Bar with Dolby Audio, Bluetooth - V51-H', price=249.99 , description="Hear what you've been missing with the newly designed VIZIO V-Series™ 5.1 Home Theater Sound Bar. The V-Series 5.1 offers immersive home theater surround sound, a sophisticated new look and HDMI connectivity for the highest-quality audio. Three full-range speakers--including a dedicated center speaker for crystal-clear dialogue--are all perfectly balanced within the slim sound bar. Also included are a pair of low-profile surround speakers to envelop the listener, and a wireless 5” subwoofer that brings booming bass. 4K HDR content is enhanced with Dolby Audio™ 5.1 for the highest-fidelity sound, and DTS® Virtual:X™ sound enhancement adds room-filling, floor-to-ceiling virtualized 3D sound to movies and music. Optional surround modes provide the versatility to play stereo music through the sound bar and surround speakers simultaneously, transforming any content into powerful 5.1 audio; or place the surround speakers up front, next to the sound bar, for more expansive virtual surround in smaller spaces. Voice Assistant Input gives you the convenience of a voice assistant you're already accustomed to (sold separately) and lets you operate it right through the sound bar for an upgraded audio experience. You can also wirelessly connect your compatible phone for high-quality Bluetooth music streaming. Now with an elegant new backlit LCD display remote control, the VIZIO V-Series 5.1 Home Theater Sound Bar can help turn your living room into a captivating home theater.")
+    camera = Product(department_id=1, name='Canon EOS REBEL T7 EF18-55mm + EF 75-300mm Double Zoom KIT', price=499.99 , description="Up your photography game with the EOS Rebel T7. Perfect for beginners, this camera bundle offers the essential tools you need to take your SLR skills to new heights — all in one convenient package. No matter where your next photography adventure takes you, count on the EOS Rebel T7's impressive 24.1 Megapixel CMOS sensor and wide ISO range of 100-6400 (H:12800) to capture high-quality images, even in low-light situations.")
+    samsung_galaxy = Product(department_id=1, name='Consumer Cellular Samsung Galaxy A13 5G (64GB) Smartphone - Black', price=199.99 , description="Samsung's Galaxy A series features a lineup designed to deliver unique yet affordable device packages. With the Samsung Galaxy A13 5G smartphone, you'll be able to access the new 5G network, the next generation in wireless technology that offers faster speeds for many activities. It includes a pro-grade triple rear camera, which combines a 50MP main camera, a 2MP macro, and a 2MP depth camera. A 6.5” Infinity V screen with 1600 x 720-pixel display provides brilliant viewing for any on-screen use, including full high definition video capture and playback. Impressive performance is assured from a 2.2GHz + 2GHz octa-core processor, along with best in class power from a 5,000 mAh battery. The Galaxy A13 5G comes with 64GB of storage, which can be expanded to a robust 1TB with the addition of a microSD card (sold separately).")
+    iphone = Product(department_id=1, name='Apple iPhone 14 Pro Max', price=1099.99 , description="iPhone 14 Pro Max. Capture incredible detail with a 48MP Main camera. Experience iPhone in a whole new way with Dynamic Island and Always-On display. And get peace of mind with groundbreaking safety features.")
+    hp_laptop = Product(department_id=1, name='HP 15.6" Laptop with Windows Home in S Mode - Intel Pentium Processor - 8GB RAM - 256GB SSD Storage', price=439.99 , description="Stay connected to what matters most with long-lasting battery life for a full day of work and a thin, portable, micro-edge bezel design that makes traveling light easy. Built to keep you productive and entertained from anywhere, the HP 15in diagonal laptop features reliable performance and an expansive display, so your weekends can be full of streaming, surfing and speeding through tasks from sun up to sun down. Up to 2x more Active Noise Cancellation than the previous generation AirPods Pro, so you'll hear dramatically less noise during your commute and when you need to focus.")
+    airpods= Product(department_id=1, name='Apple AirPods Pro True Wireless Bluetooth Headphones (2nd Generation)', price=199.99 , description="Apple-designed H2 chip, the new force behind AirPods Pro, pushes advanced audio performance even further. From smarter noise cancellation to superior three-dimensional sound and battery life, it improves on the best features of AirPods Pro in a big way.")
+    bose_headset = Product(department_id=1, name='Bose QuietComfort 45 Wireless Bluetooth Noise-Cancelling Headphones', price=279.99 , description="Who says you can't have the latest in quality noise cancelling headphones and still look cool and stylish? Bose QuietComfort 45 Bluetooth headphones are an icon reborn. The original noise cancelling headphones are back, now with a combination of world-class noise cancelling performance and premium comfort, plus proprietary technology for deep, clear sound, and adjustable EQ so you can tune your music to your liking. Whether you're traveling, doing chores, or listening to your favorite podcast, you'll experience crisp, quality audio with these Bose wireless headphones. Plus, Bose QC45 over-ear headphones help you get the most play out of your Bluetooth headphones with up to 24 hours of battery life, internal mic for clear calls, and a strong, reliable connection with Bluetooth 5.1.")
+    apple_watch = Product(department_id=1, name='Apple Watch Series 8 GPS + Cellular Stainless Steel Case with Sport Band', price=749.99 , description="Apple Watch Series 8 features advanced health sensors and apps, so you can take an ECG,¹ measure heart rate and blood oxygen,² and track temperature changes³ for advanced insights into your menstrual cycle.⁴ And with Crash Detection, sleep stages tracking, and advanced workout metrics, it helps you stay active, healthy, safe, and connected.")
+    ring_doorbell = Product(department_id=1, name='Ring 1080p Wireless Video Doorbell', price=59.99 , description="See, hear and speak with visitors from anywhere with the new and improved Video Doorbell. Customize your motion zone settings to focus only on important areas and receive real-time notifications on your phone, tablet, or select Alexa-enabled device when there's movement at your door. With infrared night vision and live view capabilities, you can check in on what matters anytime from the free Ring App. Video Doorbell lets you stay conveniently connected to home—no matter where you are.")
+    keyboard = Product(department_id=1, name='Logitech MK360 Wireless Keyboard and Mouse Set - Black (920-003376)', price=36.99 , description="Beautifully convenient, compact combo. Type, scroll, search and browse more comfortably and easily with this beautifully designed and streamlined compact keyboard and contoured mouse. This compact keyboard is 20 percent smaller than a standard keyboard with a quiet, comfortable typing experience. The MK360 features a long battery life, go longer between battery changes up to 3 years for the keyboard and 6 months for the mouse. Precision mouse control features a high-definition optical sensor for accurate tracking and cursor control. Comfortable, compact, contoured shape is easy to take anywhere.Plug one tiny receiver into a USB port to connect both the keyboard and mouse with a reliable Logitech Advanced 2.4 GHz wireless connection.")
+    
+
+    db.session.add(viziotv)
+    db.session.add(google_chromecast)
+    db.session.add(vizio_soundbar)
+    db.session.add(camera)
+    db.session.add(samsung_galaxy)
+    db.session.add(iphone)
+    db.session.add(hp_laptop)
+    db.session.add(airpods)
+    db.session.add(bose_headset)
+    db.session.add(apple_watch)
+    db.session.add(ring_doorbell)
+    db.session.add(keyboard)
+
+    = Product(department_id=1, name='', price= , description="")
+    = Product(department_id=1, name='', price= , description="")
+    = Product(department_id=1, name='', price= , description="")
+    = Product(department_id=1, name='', price= , description="")
+    = Product(department_id=1, name='', price= , description="")
+    = Product(department_id=1, name='', price= , description="")
+    = Product(department_id=1, name='', price= , description="")
+    = Product(department_id=1, name='', price= , description="")
+
+    db.session.commit()
+
+
+    def undo_products():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.products RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM products")
+        
+    db.session.commit()
