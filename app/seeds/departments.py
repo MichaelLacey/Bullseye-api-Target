@@ -8,7 +8,7 @@ def seed_departments():
     sports_outdoors = Department(name='Sports & Outdoors', image_url='https://target.scene7.com/is/image/Target/GUEST_6949369e-0e6c-4cc6-8451-563c9aa68ceb?qlt=85&fmt=webp&hei=324&wid=324&fit=crop')
     movies = Department(name='Movies', image_url='https://target.scene7.com/is/image/Target/GUEST_c0b5f979-5457-4a69-bea4-48ffc17c3227?wid=1000&hei=1000&qlt=80&fmt=webp')
     personal_care = Department(name='Personal Care', image_url='https://target.scene7.com/is/image/Target/GUEST_1bcea319-4a69-42a9-9639-ed05aadf5496?wid=325&hei=325&qlt=80&fmt=pjpeg')
-    kitchen_dining = Department(name-'Kitchen & Dining', image_url='https://target.scene7.com/is/image/Target/GUEST_2758701a-9d26-46e8-ad4f-620eb1c1ccb6?qlt=85&fmt=webp&hei=325&wid=325')
+    kitchen_dining = Department(name='Kitchen & Dining', image_url='https://target.scene7.com/is/image/Target/GUEST_2758701a-9d26-46e8-ad4f-620eb1c1ccb6?qlt=85&fmt=webp&hei=325&wid=325')
 
     db.session.add(electronics)
     db.session.add(household_essentials)

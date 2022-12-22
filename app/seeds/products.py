@@ -90,10 +90,9 @@ def seed_products():
     
     db.session.commit()
 
-    def undo_products():
+def undo_products():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.products RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM products")
-        
-    db.session.commit()
+        db.session.commit()
