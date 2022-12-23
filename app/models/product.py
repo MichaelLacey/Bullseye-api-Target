@@ -14,3 +14,11 @@ class Product(db.Model):
     description = db.Column(db.Text)
     
     department_relationship = db.relationship('Department', backref='products')
+    
+    def to_dict(self):
+        return {
+            'department_id':self.department_id,
+            'name':self.name,
+            'price': self.price,
+            'description': self.description
+        }
