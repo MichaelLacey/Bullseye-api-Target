@@ -8,3 +8,14 @@ cart_routes = Blueprint( 'carts', __name__,  )
 def get_cart_products():
     cart = db.session.query(Cart_Product).all()
     return jsonify(cart)
+
+
+@cart_routes.route('/add/<int:product_id>')
+def add_cart_product(product_id):
+    cart = db.session.query(Cart_Product).all()
+    print('This is my cart', cart)
+    product = Product.query.get(product_id)
+    json_product = product.to_dict()
+    print('product', product)
+    return ' in this add route '
+    
