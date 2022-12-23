@@ -7,5 +7,5 @@ Cart_Product = db.Table(
 )
 
 if environment == 'production':
-    members.schema = SCHEMA
+    cart_products.schema = SCHEMA
 
