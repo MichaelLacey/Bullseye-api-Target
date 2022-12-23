@@ -1,19 +1,18 @@
-"""creating tables
+"""create tables
 
-Revision ID: 83c030e9c09f
+Revision ID: a3f5311fdc50
 Revises: 
-Create Date: 2022-12-23 12:41:32.029228
+Create Date: 2022-12-23 13:36:18.144093
 
 """
 from alembic import op
 import sqlalchemy as sa
-
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '83c030e9c09f'
+revision = 'a3f5311fdc50'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,6 +29,7 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE departments SET SCHEMA {SCHEMA};")
 
+
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('first_name', sa.String(length=40), nullable=False),
@@ -42,6 +42,7 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
+
     op.create_table('carts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -51,10 +52,11 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE carts SET SCHEMA {SCHEMA};")
 
+
     op.create_table('products',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('department_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=100), nullable=False),
+    sa.Column('name', sa.String(length=150), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
     sa.ForeignKeyConstraint(['department_id'], ['departments.id'], ),
@@ -62,6 +64,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE products SET SCHEMA {SCHEMA};")
+
 
     op.create_table('cart_products',
     sa.Column('product_id', sa.Integer(), nullable=True),
@@ -72,6 +75,7 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE cart_products SET SCHEMA {SCHEMA};")
 
+
     op.create_table('product_images',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('product_id', sa.Integer(), nullable=False),
@@ -81,6 +85,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE product_images SET SCHEMA {SCHEMA};")
+
 
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -94,6 +99,8 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
+
+
     # ### end Alembic commands ###
 
 
