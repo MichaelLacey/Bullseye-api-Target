@@ -8,8 +8,3 @@ cart_routes = Blueprint( 'carts', __name__,  )
 def get_cart_products():
     cart = db.session.query(Cart_Product).all()
     return jsonify(cart)
-
-
-@cart_routes.route('/add')
-def add_to_cart():
-    
