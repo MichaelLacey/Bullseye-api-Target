@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .cart_product import Cart_Product
 
 class Product(db.Model):
     __tablename__ = 'products'
@@ -14,6 +15,11 @@ class Product(db.Model):
     description = db.Column(db.Text)
     
     department_relationship = db.relationship('Department', backref='products')
+    users = db.relationship(
+        "User",
+        secondary=Cart_Product,
+        back_populates="products"
+    )
     
     def to_dict(self):
         return {
