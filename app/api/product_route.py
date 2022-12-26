@@ -4,8 +4,8 @@ from app.models import Department, Product
 
 product_routes = Blueprint( 'products', __name__,  )
 
+# Get product by productId
 @product_routes.route('/<int:product_id>')
 def single_product(product_id):
-    product = Product.query.get(product_id)
-    json_product = product.to_dict()
-    return json_product
+    return Product.query.get(product_id).to_dict()
+    

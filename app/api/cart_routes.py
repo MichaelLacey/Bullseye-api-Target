@@ -7,21 +7,48 @@ cart_routes = Blueprint( 'carts', __name__,  )
 @cart_routes.route('')
 @login_required
 def get_cart_products():
+    #Grab user's products through the joined table by keying into products of user
     user = User.query.get(current_user.id).products
+    # Each model has a to_dict() method to put all the info into a dictionary(pojo)
     return jsonify( [ product.to_dict() for product in user] )
 
 
     
   
 
-
+# Add product to a users cart 
 @cart_routes.route('/add/<int:product_id>', methods=['POST'])
 @login_required
-def add_cart_product(product_id, user_id):
-    print('current user', current_user.id)
-    cart = db.session.query(Cart_Product).filter(userid == current_user.id )
+def add_cart_product(product_id):
+    # Get all users products
+    users_cart = User.query.get(current_user.id).products
+    # grab the user 
+    user = User.query.get(current_user.id)
+    # grab product by id
     product = Product.query.get(product_id)
-    cart.append(product.to_dict())
+    # add the product to the users product list
+    # Add the product into the database then commit so it saves
+    user.products.append(product)
+    db.session.add(user)
     db.session.commit()
+    cart = [ product.to_dict() for product in users_cart ]
     return jsonify(cart)
     
+# Delete a product from a users cart
+@cart_routes.route('/delete/<int:product_id>', methods=['DELETE'])
+@login_required
+def delete_cart_product(product_id):
+    # Get current user
+    user = User.query.get(current_user.id)
+    #Get product then remove that from user's products
+    product = Product.query.get(product_id)
+    users_products = user.products
+    # loop through the users products to find a matching id
+    for product in users_products:
+        if product_id == product.id:
+            user.products.remove(product)
+            db.session.add(user)
+            db.session.commit()
+            return jsonify('Product successfully deleted from cart.')
+    # If there is no product that matches the product id
+    return jsonify("Couldn't find that product in your cart.")
