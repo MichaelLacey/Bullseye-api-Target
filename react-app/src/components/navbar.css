@@ -1,3 +1,14 @@
 .navDiv {
+    display: flex;
+    justify-content: flex-end;
     background-color: rgb(204,13,0);
+    height: 50px;
+    align-items: center;
+}
+.navH4{
+    width: 100px;
+    color: rgb(246,239,239);
+}
+.navBtn{
+    margin-right: 1%;
 }

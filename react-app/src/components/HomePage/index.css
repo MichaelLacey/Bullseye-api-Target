@@ -1,0 +1,17 @@
+.homepageMainDiv{
+    /* display: flex;
+    flex-direction: row; */
+}
+.departments{
+    display: flex;
+}
+.departmentDiv{
+    width: 200px;
+    height: 250px;
+}
+.departmentImg{
+    max-width:130px;
+    max-height:95px;
+    width: auto;
+    height: auto;
+  }
