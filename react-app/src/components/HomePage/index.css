@@ -1,17 +1,35 @@
 .homepageMainDiv{
-    /* display: flex;
-    flex-direction: row; */
+    display: flex;
+    justify-content: center;
 }
 .departments{
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3%;
+    width: 50%;
 }
 .departmentDiv{
-    width: 200px;
-    height: 250px;
+    width: 50%;
+    width: 250px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
 }
+    
 .departmentImg{
-    max-width:130px;
-    max-height:95px;
+    max-width:160px;
+    max-height:155px;
+    border-radius: 45%;
     width: auto;
     height: auto;
+    margin: 0 auto;
+    /* display: flex;
+    justify-content: center; */
+  }
+  .departmentH4{
+    color: rgb(57,61,57);
+    width: auto;
+    display: flex;
+    justify-content: center;
   }

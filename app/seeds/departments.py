@@ -3,10 +3,10 @@ from app.models import db, Department, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_departments():
-    electronics = Department(name='Electronics', image_url='https://target.scene7.com/is/image/Target/GUEST_498b78b7-3ff1-408f-b4ad-4ba38eb73fb1')
+    electronics = Department(name='Electronics', image_url='https://target.scene7.com/is/image/Target/GUEST_ff3c311a-e99e-4834-bac4-07055eb95f5d?wid=325&hei=325&qlt=80&fmt=pjpeg')
     household_essentials = Department(name='Household Essentials', image_url='https://target.scene7.com/is/image/Target/GUEST_3db36f68-f2c9-4561-a858-68d6584366c0?wid=325&hei=325&qlt=80&fmt=pjpeg')
     sports_outdoors = Department(name='Sports & Outdoors', image_url='https://target.scene7.com/is/image/Target/GUEST_6949369e-0e6c-4cc6-8451-563c9aa68ceb?qlt=85&fmt=webp&hei=324&wid=324&fit=crop')
-    movies = Department(name='Movies', image_url='https://target.scene7.com/is/image/Target/prod_offer_382911_8fcc4941-8dd1-3c63-95c1-1c726de63250?wid=900&hei=900&qlt=45&fmt=jpeg')
+    movies = Department(name='Movies', image_url='https://target.scene7.com/is/image/Target/GUEST_c93ceddc-bbe6-4184-9bfb-6526855b020c?wid=325&hei=325&qlt=80&fmt=pjpeg')
     personal_care = Department(name='Personal Care', image_url='https://target.scene7.com/is/image/Target/GUEST_1bcea319-4a69-42a9-9639-ed05aadf5496?wid=325&hei=325&qlt=80&fmt=pjpeg')
     kitchen_dining = Department(name='Kitchen & Dining', image_url='https://target.scene7.com/is/image/Target/GUEST_2758701a-9d26-46e8-ad4f-620eb1c1ccb6?qlt=85&fmt=webp&hei=325&wid=325')
 
