@@ -11,6 +11,7 @@ def all_departments():
     departments =  Department.query.all()
     department_dict = [ department.to_dict() for department in departments ]
     return jsonify(department_dict)
+    
 
 
 # Get department by id
