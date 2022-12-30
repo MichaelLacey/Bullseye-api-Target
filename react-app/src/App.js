@@ -45,6 +45,9 @@ function App() {
         <Route path='/' exact={true} >
           <HomePage />
         </Route>
+        <Route>
+          
+        </Route>
       </Switch>
     </BrowserRouter>
   );
