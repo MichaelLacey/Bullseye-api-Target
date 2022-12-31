@@ -13,6 +13,10 @@ class Product(db.Model):
     name = db.Column(db.String(150), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text)
+    image_url1 = db.Column(db.String(1000))
+    image_url2 = db.Column(db.String(1000))
+    image_url3 = db.Column(db.String(1000))
+    image_url4 = db.Column(db.String(1000))
     
     department_relationship = db.relationship('Department', backref='products')
     users = db.relationship(
@@ -27,5 +31,9 @@ class Product(db.Model):
             'department_id':self.department_id,
             'name':self.name,
             'price': self.price,
-            'description': self.description
+            'description': self.description,
+            'image_url1': self.image_url1,
+            'image_url2': self.image_url2,
+            'image_url3': self.image_url3,
+            'image_url4': self.image_url4,
         }
