@@ -48,10 +48,10 @@ def upgrade():
     sa.Column('name', sa.String(length=150), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
-    sa.Column('image_url1', sa.String(length=1000), nullable=True),
-    sa.Column('image_url2', sa.String(length=1000), nullable=True),
-    sa.Column('image_url3', sa.String(length=1000), nullable=True),
-    sa.Column('image_url4', sa.String(length=1000), nullable=True),
+    sa.Column('image_url1', sa.Text(), nullable=True),
+    sa.Column('image_url2', sa.Text(), nullable=True),
+    sa.Column('image_url3', sa.Text(), nullable=True),
+    sa.Column('image_url4', sa.Text(), nullable=True),
     sa.ForeignKeyConstraint(['department_id'], ['departments.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
