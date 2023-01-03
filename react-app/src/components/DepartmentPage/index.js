@@ -7,10 +7,8 @@ import { getProductsThunk } from "../../store/product";
 export default function DepartmentPage() {
     const dispatch = useDispatch();
     const { departmentId } = useParams();
-    
-    // This is working now just map it when you get on next!!!!!!
+
     const productsArr = Object.values(useSelector(state => state.products))
-    console.log('Products by department !!!!!', productsArr);
 
     useEffect(() => {
         dispatch(getProductsThunk(departmentId))
@@ -24,12 +22,15 @@ export default function DepartmentPage() {
 
                 {productsArr.map(ele => (
                     <div className="productMap">
-                    <Link>
-                        <div>{ele.name}</div>
-                        <img key={ele.id} className='departmentProductImg' src={`${ele.image_url}`} alt='spotPic'></img>
-                    </Link>
-                </div>
-                    ))}
+                        <Link className="productMapLink" key={`a${ele.id}`} style={{ textDecoration: 'none' }} to={`/departments/${departmentId}/${ele.id}`}>
+                            <img key={ele.id} className='departmentProductImg' src={`${ele.image_url1}`} alt='spotPic'></img>
+                            <h4 className="productsH5">{ele.name}</h4>
+                            <div className="productsArrPrice">${ele.price}</div>
+                            <h4 className="avgStarRatingpa"> ★0.0 </h4>
+                        </Link>
+                        <button className='deptAddCartBtn'> Add to cart</button>
+                    </div>
+                ))}
 
             </div>
         </div>

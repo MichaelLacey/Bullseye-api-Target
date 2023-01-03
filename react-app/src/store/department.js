@@ -18,7 +18,6 @@ export const getDepartments = (departments) => {
 export const getDepartmentsThunk = () => async (dispatch) => {
     const response = await fetch('/api/departments');
     const departments = await response.json();
-    console.log('departments', departments)
     dispatch(getDepartments(departments))
 }
 
