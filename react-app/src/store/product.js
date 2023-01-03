@@ -11,7 +11,7 @@ export const getProducts = (products) => {
 /* ___________ T H U N K S   ___________ */
 // Get products for department 
 export const getProductsThunk = (departmentId) => async(dispatch) => {
-    const response = await fetch(`/api/:departmentId/products`)
+    const response = await fetch(`/api/departments/${departmentId}/products`)
     const products = await response.json()
     dispatch(getProducts(products));
 };

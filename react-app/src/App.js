@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import './index.css'
 import HomePage from './components/HomePage';
+import DepartmentPage from './components/DepartmentPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,8 +46,8 @@ function App() {
         <Route path='/' exact={true} >
           <HomePage />
         </Route>
-        <Route>
-          
+        <Route  path='/departments/:departmentId' exact={true}>
+          <DepartmentPage />
         </Route>
       </Switch>
     </BrowserRouter>

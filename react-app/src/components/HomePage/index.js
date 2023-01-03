@@ -7,11 +7,11 @@ import './index.css'
 export default function HomePage() {
     const dispatch = useDispatch();
 
-    const departmentsArr = Object.values(useSelector(state => state.departments))
+    const departmentsArr = Object.values(useSelector(state => state.departments));
 
     useEffect(() => {
         dispatch(getDepartmentsThunk())
-    }, [dispatch])
+    }, [dispatch]);
 
     return (
         <div className="homepageMainDiv">
