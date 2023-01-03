@@ -1,8 +1,8 @@
-"""Creating database tables
+"""Creating tables
 
-Revision ID: 053d10cc179c
+Revision ID: 3275c503b8b1
 Revises: 
-Create Date: 2022-12-31 16:03:25.140849
+Create Date: 2023-01-03 12:35:23.411261
 
 """
 from alembic import op
@@ -12,8 +12,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = '053d10cc179c'
+revision = '3275c503b8b1'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -63,7 +64,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['product_id'], ['products.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], )
-    ) 
+    )
     if environment == "production":
         op.execute(f"ALTER TABLE cart_products SET SCHEMA {SCHEMA};")
 
@@ -79,6 +80,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 
