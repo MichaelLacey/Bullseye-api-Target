@@ -4,6 +4,9 @@
     background-color: rgb(204,13,0);
     height: 50px;
     align-items: center;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
 }
 .navH4{
     width: 100px;
