@@ -20,14 +20,12 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_cart_products()
-        # undo_product_images()
         undo_products()
         undo_departments()
         undo_users()
     seed_users()
     seed_departments()
     seed_products()
-    # seed_product_images()
     seed_cart_products()
     # Add other seed functions here
 
@@ -36,7 +34,6 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_cart_products()
-    # undo_product_images()
     undo_products()
     undo_departments()
     undo_users()

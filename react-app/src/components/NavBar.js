@@ -26,9 +26,15 @@ const NavBar = () => {
         </NavLink>
       </div>
 
-      <div>
+      {/* <div>
         <NavLink to='/users' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
           <h4 className='navH4'>Users</h4>
+        </NavLink>
+      </div> */}
+      
+      <div>
+        <NavLink to='/cart' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
+        <img className='cartImg' src='https://i1.wp.com/afriwestmedia.com/wp-content/uploads/2017/03/white-shopping-cart-icon.png?fit=300%2C300' alt='Pic'></img>
         </NavLink>
       </div>
 

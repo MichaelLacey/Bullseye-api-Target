@@ -4,3 +4,6 @@ html,body {
     padding:0;
     font-family: "Helvetica for Target", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+button{
+    cursor: pointer;
+}

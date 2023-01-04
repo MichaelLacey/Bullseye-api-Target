@@ -11,6 +11,8 @@ import { authenticate } from './store/session';
 import './index.css'
 import HomePage from './components/HomePage';
 import DepartmentPage from './components/DepartmentPage';
+import ProductPage from './components/ProductPage';
+import Cart from './components/Cart';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +51,12 @@ function App() {
         <Route  path='/departments/:departmentId' exact={true}>
           <DepartmentPage />
         </Route>
+        <Route  path='/departments/:departmentId/:productId' exact={true}>
+          <ProductPage />
+        </Route>
+        <ProtectedRoute path='/cart' exact={true} >
+          <Cart />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
