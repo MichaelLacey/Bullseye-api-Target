@@ -1,58 +1,92 @@
-.mainPageCartDiv{
+.mainPageCartDiv {
     width: 80%;
     margin: 0 auto;
 }
-.cartDiv{
+
+.cartDiv {
     box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
     width: 60%;
 }
 
-.cartMapped{
+.cartMapped {
     display: flex;
     height: 120px;
     border-top: .5px solid lightgray;
 }
 
-.cartPrice{
+.cartProductImg {
+    margin-left: 2%;
+}
+
+.cartPrice {
+    margin-left: 2%;
+}
+
+.cartNameH4 {
+    font-weight: lighter;
+}
+
+.deleteProduct {
+    margin-right: 2%;
+    margin-left: 2%;
+    cursor: pointer;
+    color: gray;
+}
+
+.cartPrice {
     display: flex;
-    justify-items: flex-end;
+    justify-content: space-between;
     margin-left: auto;
     margin-right: .5%;
 }
-.mainCartDiv{
+
+.mainCartDiv {
     display: flex;
 }
+
 .orderSummary {
     width: 35%;
     margin-left: 5%;
 }
-.delivery{
+
+.delivery {
     display: flex;
     justify-content: space-between;
+    align-content: center;
 }
-.freeDelivery{
+
+.freeDelivery {
     color: red;
 }
-.orderSummary > p {
+
+.orderSummary>p {
     margin: 0;
     margin-bottom: 10%;
 }
-.delivery > p {
+
+.delivery>p {
     margin: 0;
     margin-bottom: 10%;
 }
-.tax{
+
+.tax {
     display: flex;
     justify-content: space-between;
     border-bottom: .5px solid lightgray;
 }
-.subtotal{
+
+.subtotal {
     display: flex;
     justify-content: space-between;
     border-top: .5px solid lightgray;
 }
-.total{
+
+.total {
     display: flex;
     justify-content: space-between;
     border-top: .5px solid lightgray;
+}
+
+.cartSubtotalHeader {
+    margin-left: 2%;
 }

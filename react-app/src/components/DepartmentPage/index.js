@@ -27,7 +27,7 @@ export default function DepartmentPage() {
                             <img key={ele.id} className='departmentProductImg' src={`${ele.image_url1}`} alt='spotPic'></img>
                             <h4 className="productsH5">{ele.name}</h4>
                             <div className="productsArrPrice">${Number(ele.price).toFixed(2)}</div>
-                            <h4 className="avgStarRatingpa"> ★0.0 </h4>
+                            {/* <h4 className="avgStarRatingpa"> ★0.0 </h4> */}
                         </Link>
                         
                         <button className='deptAddCartBtn'> Add to cart</button>

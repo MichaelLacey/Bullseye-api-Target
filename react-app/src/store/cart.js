@@ -36,7 +36,6 @@ export const deleteCartItem = (product) => {
 export const getUsersCartThunk = () => async(dispatch) => {
     const response = await fetch('/api/cart');
     const cart = await response.json();
-    console.log('Here is your cart my friendo..', cart);
     dispatch(getCartItems(cart));
 };
 
