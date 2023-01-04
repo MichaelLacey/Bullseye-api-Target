@@ -1,8 +1,8 @@
-"""Creating tables
+"""Creating Database!
 
-Revision ID: 3275c503b8b1
+Revision ID: ea0d2092c514
 Revises: 
-Create Date: 2023-01-03 12:35:23.411261
+Create Date: 2023-01-04 16:56:34.554306
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '3275c503b8b1'
+revision = 'ea0d2092c514'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -79,7 +79,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE reviewss SET SCHEMA {SCHEMA};")
 
     # ### end Alembic commands ###
 

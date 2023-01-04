@@ -28,7 +28,6 @@ export default function Cart() {
                     {cart && cart.map(ele => (
                         <div className="cartMapped">
 
-
                             <img key={`a${ele.id}`} className='cartProductImg' src={`${ele.image_url1}`} alt='Pic'></img>
                             <h4 key={`b${ele.id}`}>{ele.name}</h4>
                             <h4 className="cartPrice">${`${ele.price}`}</h4>
@@ -61,7 +60,7 @@ export default function Cart() {
                         <p>Total</p>
                         <p> $Amount</p>
                     </div>
-                    
+
                 </div>
 
             </div>
