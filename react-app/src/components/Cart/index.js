@@ -13,21 +13,58 @@ export default function Cart() {
     useEffect(() => {
         dispatch(getUsersCartThunk())
     }, [dispatch]);
-    
+
     return (
-        <div className="cartDiv">
+        <div className="mainPageCartDiv">
 
-            <div> Hello cart page</div>
-            {cart && cart.map(ele => (
+            <h3>Shopping Cart</h3>
+            {/* <h4> $100 subtotal ● 5 items</h4> */}
 
-                <div className="cartMapped">
+            <div className="mainCartDiv">
 
-                    <img key={`a${ele.id}`} className='cartProductImg' src={`${ele.image_url1}`} alt='Pic'></img>
-                    <h4 key={`b${ele.id}`}>{ele.name}</h4>
+                <div className="cartDiv">
+
+                    <h4> $100 subtotal ● 5 items</h4>
+                    {cart && cart.map(ele => (
+                        <div className="cartMapped">
+
+
+                            <img key={`a${ele.id}`} className='cartProductImg' src={`${ele.image_url1}`} alt='Pic'></img>
+                            <h4 key={`b${ele.id}`}>{ele.name}</h4>
+                            <h4 className="cartPrice">${`${ele.price}`}</h4>
+
+                        </div>
+                    ))}
+
 
                 </div>
 
-            ))}
+                <div className="orderSummary">
+                    <h3 className="summaryTitle">Order summary</h3>
+
+                    <div className="subtotal">
+                        <p >Subtotal</p>
+                        <p>money amount</p>
+                    </div>
+
+                    <div className="delivery">
+                        <p>delivery</p>
+                        <p className="freeDelivery">Free</p>
+                    </div>
+
+                    <div className="tax">
+                        <p>Estimated tax</p>
+                        <p>money amount</p>
+                    </div>
+
+                    <div className="total">
+                        <p>Total</p>
+                        <p> $Amount</p>
+                    </div>
+                    
+                </div>
+
+            </div>
 
         </div>
     );
