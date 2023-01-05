@@ -42,3 +42,16 @@
 .priceAndRightMenu{
     width: 20%;
 }
+.productInCartBtn{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background-color: rgb(211,211,211);
+    color: rgb(255,255,255);
+    border: none;
+    font-weight: bold;
+    height: 32px;
+    width: 252px;
+    border-radius: 6px;
+    cursor: not-allowed;
+}

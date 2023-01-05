@@ -16,9 +16,9 @@ export default function Cart() {
     let tax = sum * .08;
     let total = sum + tax;
     // Turn all of the variables into numbers that have commas in them
-    sum = sum.toFixed(2).toLocaleString();
-    tax = tax.toFixed(2).toLocaleString();
-    total = total.toFixed(2).toLocaleString();
+    sum = sum.toLocaleString(undefined, {maximumFractionDigits: 2})
+    tax = tax.toLocaleString(undefined, {maximumFractionDigits: 2})
+    total = total.toLocaleString(undefined, {maximumFractionDigits: 2})
    
     
     useEffect(() => {
@@ -29,8 +29,7 @@ export default function Cart() {
         <div className="mainPageCartDiv">
 
             <h3>Shopping Cart</h3>
-            {/* <h4> $100 subtotal ● 5 items</h4> */}
-
+           
             <div className="mainCartDiv">
 
                 <div className="cartDiv">
@@ -41,7 +40,7 @@ export default function Cart() {
 
                             <img key={`a${ele.id}`} className='cartProductImg' src={`${ele.image_url1}`} alt='Pic'></img>
                             <h4 key={`b${ele.id}`} className='cartNameH4'>{ele.name}</h4>
-                            <h4 className="cartPrice" key={`c${ele.id}`}>${`${ele.price}`}</h4>
+                            <h4 className="cartPrice" key={`c${ele.id}`}>${Number(ele.price).toLocaleString(undefined, {maximumFractionDigits: 2})}</h4>
                             <h4 className="deleteProduct" onClick={() => dispatch(removeFromCartThunk(ele.id))} key={`d${ele.id}`}> X </h4>
 
                         </div>

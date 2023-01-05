@@ -11,20 +11,16 @@ export default function DepartmentPage() {
     const { departmentId } = useParams();
 
     const productsArr = Object.values(useSelector(state => state.products));
-      // Grab user of the session
-    const sessionUserObject = Object.values(useSelector(state => state.session.user))
+    // Grab user of the session
+    const sessionUserObject = Object.values(useSelector(state => state.session))
     const cart = Object.values(useSelector(state => state.cart));
-    // console.log('Cart', cart)
-    // console.log('userrrrrrrrrrrrr', sessionUserObject)
+    
     const cartArr = [];
-    cart.forEach(ele => {
-        // console.log('yurrrrrrrrrrrrrrrrr',ele.id)
-        cartArr.push(ele.id)
-    })
-    console.log('cart array', cartArr)
+    cart.forEach(ele => cartArr.push(ele.id))
+    
     useEffect(() => {
         dispatch(getProductsThunk(departmentId));
-        if (sessionUserObject) {
+        if (sessionUserObject.user) {
             dispatch(getUsersCartThunk())
         }
     }, [dispatch, departmentId]);

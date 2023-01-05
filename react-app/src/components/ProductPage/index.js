@@ -5,6 +5,8 @@ import { getProductThunk } from "../../store/product";
 import { getDepartmentThunk } from "../../store/department";
 import './index.css'
 import { clearProductAction } from "../../store/department";
+import { getUsersCartThunk, addToCartThunk } from "../../store/cart";
+
 export default function ProductPage() {
     const dispatch = useDispatch();
     const { productId } = useParams();
@@ -13,13 +15,20 @@ export default function ProductPage() {
 
     const product = Object.values(useSelector(state => state.products))[0]
     const department = Object.values(useSelector(state => state.departments))
-    console.log('product !!!!!!!!!!!!!!!!!!!!', product)
-    console.log('department !!!!!!!!!!!!!!!!!!!!', department)
+    // Grab user of the session
+    const sessionUserObject = Object.values(useSelector(state => state.session))
+    const cart = Object.values(useSelector(state => state.cart));
+    
+    const cartArr = [];
+    cart.forEach(ele => cartArr.push(ele.id))
 
     useEffect(() => {
         dispatch(getProductThunk(productId))
         dispatch(getDepartmentThunk(departmentId))
 
+        if (sessionUserObject.user) {
+            dispatch(getUsersCartThunk())
+        }
         return (() => dispatch(clearProductAction()))
     }, [dispatch, productId, departmentId]);
 
@@ -50,7 +59,8 @@ export default function ProductPage() {
                         <h3> Rating ★ </h3>
                         <h3> Free shipping </h3>
                         <h3> This item isn't sold in stores </h3>
-                        <button className='productAddCartBtn'> Add to cart</button>
+                        {!cartArr.includes(product.id) &&<button className='productAddCartBtn' onClick={() => dispatch(addToCartThunk(product.id))}> Add to cart</button>}
+                        {cartArr.includes(product.id) && <button className="productInCartBtn">In cart</button>}
                     </div>
 
                 </div>
