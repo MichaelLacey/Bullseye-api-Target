@@ -52,7 +52,8 @@
 .delivery {
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    /* align-content: center; */
+    margin: auto 0;
 }
 
 .freeDelivery {
@@ -65,8 +66,9 @@
 }
 
 .delivery>p {
-    margin: 0;
+    /* margin: 0px; */
     margin-bottom: 10%;
+    margin: 5% 0;
 }
 
 .tax {
@@ -84,9 +86,19 @@
 .total {
     display: flex;
     justify-content: space-between;
-    border-top: .5px solid lightgray;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .cartSubtotalHeader {
     margin-left: 2%;
+}
+.cartCheckout {
+    background-color: rgb(204,0,0);
+    color: rgb(255,255,255);
+    border: none;
+    font-weight: bold;
+    height: 50px;
+    border-radius: 6px;
+    width: 100%;
 }
