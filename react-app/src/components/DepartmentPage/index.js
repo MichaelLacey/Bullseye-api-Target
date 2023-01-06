@@ -40,7 +40,7 @@ return (
                         <div className="productsArrPrice" key={`e${ele.id}`}>${Number(ele.price).toFixed(2)}</div>
                     </Link>
 
-                    {!cartArr.includes(ele.id) &&<button className='deptAddCartBtn' onClick={() => dispatch(addToCartThunk(ele.id))}> Add to cart</button>}
+                    {!cartArr.includes(ele.id) && <button className='deptAddCartBtn' onClick={() => dispatch(addToCartThunk(ele.id))}> Add to cart</button>}
                     {cartArr.includes(ele.id) && <button className="deptInCartBtn">In cart</button>}
                 </div>
             ))}

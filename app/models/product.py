@@ -19,6 +19,7 @@ class Product(db.Model):
     image_url4 = db.Column(db.Text)
     
     department_relationship = db.relationship('Department', backref='products')
+    # product_to_review = db.relationship('Review', backref='products')
     users = db.relationship(
         "User",
         secondary=Cart_Product,

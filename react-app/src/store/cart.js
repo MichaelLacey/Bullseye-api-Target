@@ -45,7 +45,6 @@ export const addToCartThunk = (productId) => async (dispatch) => {
 
     if (response.ok) {
         const product = await response.json();
-        console.log('product from thunk', product[product.length - 1])
         dispatch(addCartItem(product[product.length - 1]))
         return product
     };

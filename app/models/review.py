@@ -11,6 +11,16 @@ class Review(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('products.id')), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
-    comment = db.Column(db.String(150), nullable=False)
+    comment = db.Column(db.Text(), nullable=False)
 
-    product_relationship = db.relationship('Product', backref='reviews')
+    review_to_product = db.relationship('Product', backref='reviews')
+
+
+    def to_dict(self):
+        return {
+            'id':self.id,
+            'product_id':self.product_id,
+            'user_id': self.user_id,
+            'rating': self.rating,
+            'comment': self.comment
+        }
