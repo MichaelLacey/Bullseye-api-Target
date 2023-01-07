@@ -1,0 +1,60 @@
+.editReviewForm {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    height: 66vh;
+    margin-top: 2%;
+}
+.formDiv{
+    width: 60%;
+}
+.imgDiv{
+    width: 40%;
+    height: 66vh;
+    margin-right: 2%;
+}
+.editproductImg{
+    width: 100%;
+    height: 100%;
+}
+.reviewTextArea {
+    box-shadow:  inset 2px 2px 30px rgba(0, 0, 0, 0.1);
+    resize: none;
+    overflow-y: scroll;
+    width: 100%;
+    height: 30%;
+    margin-bottom: 2%;
+}
+.starsSelect {
+    box-shadow:  inset 2px 2px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 2%;
+    height: 5%;
+}
+#starRating {
+    display: flex;
+    margin: 0;
+    margin-bottom: 2%;
+}
+
+.editReviewButton {
+    box-shadow:  2px 2px 30px rgba(0, 0, 0, 0.1);
+    background-color: rgb(204,0,0);
+    color: rgb(255,255,255);
+    border: none;
+    font-weight: bold;
+    height: 32px;
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 2%;
+}
+.deleteReviewButton {
+    box-shadow:  2px 2px 30px rgba(0, 0, 0, 0.1);
+    background-color: rgb(204,0,0);
+    color: rgb(255,255,255);
+    border: none;
+    font-weight: bold;
+    height: 32px;
+    width: 100%;
+    border-radius: 6px;
+}

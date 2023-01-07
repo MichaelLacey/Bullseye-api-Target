@@ -20,13 +20,6 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
-    // if (!password === repeatPassword) {
-    //   const data = await dispatch(signUp(username, email, password));
-    //   if (data) {
-    //     setErrors(data, ['Confirm Password field must be the same as the Password field'])
-    //   }
-    // }
-
   };
 
   const updateUsername = (e) => {

@@ -55,3 +55,32 @@
     border-radius: 6px;
     cursor: not-allowed;
 }
+
+/* --- Reviews portion --- */
+.review{
+    /* box-shadow:  2px 2px 30px rgba(0, 0, 0, 0.1); */
+    border: .5px solid lightgray;
+    margin-bottom: 1%;
+}
+.review > * {
+    margin-left: 1.5%;
+}
+
+#comment{
+    max-height: 80px;
+    overflow-y: auto;
+    word-break: break-word;
+}
+#edit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(204,0,0);
+    color: rgb(255,255,255);
+    border: none;
+    font-weight: bold;
+    height: 32px;
+    width: 150px;
+    border-radius: 6px;
+    margin-bottom:.5%;
+}

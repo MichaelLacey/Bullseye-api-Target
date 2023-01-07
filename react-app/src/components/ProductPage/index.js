@@ -1,38 +1,44 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { getProductThunk } from "../../store/product";
 import { getDepartmentThunk } from "../../store/department";
 import './index.css'
 import { clearProductAction } from "../../store/department";
 import { getUsersCartThunk, addToCartThunk } from "../../store/cart";
-
+import { getProductReviewsThunk } from "../../store/review";
 export default function ProductPage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { productId } = useParams();
     const { departmentId } = useParams();
 
 
-    const product = Object.values(useSelector(state => state.products))[0]
-    const department = Object.values(useSelector(state => state.departments))
+    const product = Object.values(useSelector(state => state.products))[0];
+    const department = Object.values(useSelector(state => state.departments));
     // Grab user of the session
-    const sessionUserObject = Object.values(useSelector(state => state.session))
+    const sessionUserObject = Object.values(useSelector(state => state.session));
     const cart = Object.values(useSelector(state => state.cart));
-    
+    const reviews = Object.values(useSelector(state => state.reviews));
+
     const cartArr = [];
-    cart.forEach(ele => cartArr.push(ele.id))
+    cart.forEach(ele => cartArr.push(ele.id));
 
     useEffect(() => {
-        dispatch(getProductThunk(productId))
-        dispatch(getDepartmentThunk(departmentId))
-
+        dispatch(getProductThunk(productId));
+        dispatch(getDepartmentThunk(departmentId));
+        dispatch(getProductReviewsThunk(productId));
         if (sessionUserObject.user) {
-            dispatch(getUsersCartThunk())
+            dispatch(getUsersCartThunk());
         }
-        return (() => dispatch(clearProductAction()))
+        return (() => dispatch(clearProductAction()));
     }, [dispatch, productId, departmentId]);
 
-    if (!product) return null
+    function reviewNav(id){
+        history.push(`/edit/review/${id}`);
+    };
+    
+    if (!product) return null;
 
     return (
         <div className="productPageMainDiv">
@@ -64,6 +70,18 @@ export default function ProductPage() {
                     </div>
 
                 </div>
+            </div>
+
+            <div className="reviewsMainDiv">
+                {reviews && reviews.map(ele => (
+
+                    <div className="review">
+                        <h4 id="names"> {ele.first_name} {ele.last_name} </h4>
+                        <p id="rating"> ★ {ele.rating} </p>
+                        <p id="comment"> {ele.comment} </p>
+                        <button id="edit" onClick={() => reviewNav(ele.id)}>Edit / Delete</button>
+                    </div>
+                ))}
             </div>
         </div>
     )

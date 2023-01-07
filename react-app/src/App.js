@@ -13,6 +13,7 @@ import HomePage from './components/HomePage';
 import DepartmentPage from './components/DepartmentPage';
 import ProductPage from './components/ProductPage';
 import Cart from './components/Cart';
+import EditReview from './components/EditReview';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -56,6 +57,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/cart' exact={true} >
           <Cart />
+        </ProtectedRoute>
+        <ProtectedRoute path='/edit/review/:reviewId' exact={true} >
+          <EditReview />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
