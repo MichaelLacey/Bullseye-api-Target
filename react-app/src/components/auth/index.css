@@ -1,0 +1,54 @@
+ /* ----- L O G I N ------ */
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    height: 90vh;
+    margin-top: 10%;
+}
+.inputs {
+    width: 100%;
+    height: 32px;
+    margin-bottom: 3%;
+}
+
+#loginButton {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background-color: rgb(204,0,0);
+    color: rgb(255,255,255);
+    border: none;
+    font-weight: bold;
+    height: 32px;
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 3%;
+}
+
+#loginH1{
+ display: flex;
+ justify-content: center;
+ text-align: center;
+ width: 100%;
+}
+
+#linkToSignup {
+    width: 100%;
+    height: 32px;
+    background-color: white;
+    color: rgb(51,51,51);
+}
+
+
+  /* -----  S I G N   U P ------ */
+#signUpPtag{
+    text-align: center;
+    color: gray;
+}
+/* logout button on nav bar/  */
+.navBtn {
+    color: white;
+    cursor: pointer;
+}

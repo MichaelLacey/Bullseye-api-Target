@@ -40,7 +40,7 @@ def add_review(product_id):
     data = form.data
     if form.validate_on_submit():
         new_review = Review(
-            product_id = data['product_id'],
+            product_id = product_id,
             user_id = data['user_id'],
             rating = data['rating'],
             comment = data['comment']

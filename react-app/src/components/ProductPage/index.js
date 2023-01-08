@@ -7,6 +7,7 @@ import './index.css'
 import { clearProductAction } from "../../store/department";
 import { getUsersCartThunk, addToCartThunk } from "../../store/cart";
 import { getProductReviewsThunk } from "../../store/review";
+
 export default function ProductPage() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -21,6 +22,11 @@ export default function ProductPage() {
     const cart = Object.values(useSelector(state => state.cart));
     const reviews = Object.values(useSelector(state => state.reviews));
 
+    // Get the avg rating for each product by iterating through reviews  
+    // adding the stars up and dividing by the length
+    let sum = 0;
+    reviews.forEach(ele => sum += ele.rating)
+    let avgRating = (sum / reviews.length).toFixed(2)
     const cartArr = [];
     cart.forEach(ele => cartArr.push(ele.id));
 
@@ -34,10 +40,13 @@ export default function ProductPage() {
         return (() => dispatch(clearProductAction()));
     }, [dispatch, productId, departmentId]);
 
-    function reviewNav(id){
-        history.push(`/edit/review/${id}`);
+    function reviewNav(ele) {
+        history.push(`/edit/review/${ele.id}`, { ele });
     };
-    
+    function createReview(product) {
+        history.push(`/create/review/${product.id}`, { product });
+    };
+
     if (!product) return null;
 
     return (
@@ -62,11 +71,12 @@ export default function ProductPage() {
 
                     <div className="priceAndRightMenu">
                         <h2>$ {Number(product.price).toFixed(2)}</h2>
-                        <h3> Rating ★ </h3>
+                        <h3>  {reviews.length > 0 ? `Rating ★ ${avgRating}` : 'Be the first to review'} </h3>
                         <h3> Free shipping </h3>
                         <h3> This item isn't sold in stores </h3>
-                        {!cartArr.includes(product.id) &&<button className='productAddCartBtn' onClick={() => dispatch(addToCartThunk(product.id))}> Add to cart</button>}
+                        {!cartArr.includes(product.id) && <button className='productAddCartBtn' onClick={() => dispatch(addToCartThunk(product.id))}> Add To Cart</button>}
                         {cartArr.includes(product.id) && <button className="productInCartBtn">In cart</button>}
+                        <button className='productAddCartBtn' onClick={() => createReview(product)}> Create A Review</button>
                     </div>
 
                 </div>
@@ -79,7 +89,7 @@ export default function ProductPage() {
                         <h4 id="names"> {ele.first_name} {ele.last_name} </h4>
                         <p id="rating"> ★ {ele.rating} </p>
                         <p id="comment"> {ele.comment} </p>
-                        <button id="edit" onClick={() => reviewNav(ele.id)}>Edit / Delete</button>
+                        <button id="edit" onClick={() => reviewNav(ele)}>Edit / Delete</button>
                     </div>
                 ))}
             </div>

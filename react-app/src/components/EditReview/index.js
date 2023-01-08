@@ -1,6 +1,6 @@
 import './index.css';
 import { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneReviewThunk } from '../../store/review';
 import { getProductThunk } from '../../store/product';
@@ -11,12 +11,18 @@ export default function EditReview() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { reviewId } = useParams();
+    // Use location from history.push from ProductPage component
+    // like passing props or using react context
+    const location = useLocation()
+    const data = location.state.ele;
+
+    
     // Grab user of the session
     let sessionUserId = useSelector(state => state.session.user.id);
     const review = Object.values(useSelector(state => state.reviews));
     const product = Object.values(useSelector(state => state.products));
-    let [comment, setComment] = useState('');
-    let [rating, setRating] = useState(1);
+    let [comment, setComment] = useState('' || data.comment);
+    let [rating, setRating] = useState(1 || data.rating);
     const [validationErrors, setValidationErrors] = useState([]);
     const productId = review[2]
     
@@ -29,8 +35,8 @@ export default function EditReview() {
     const deleteReview = (reviewId) => {
         {if(window.confirm('Are you sure you want to delete this review? This action cannt be undone.')){
             {dispatch(deleteReviewThunk(reviewId))}}
+            history.push('/')
         }
-        history.push('/')
     }
 
     const handleSubmit = async(e) => {
@@ -42,11 +48,8 @@ export default function EditReview() {
         };
         setComment('');
         setRating(1);
-        console.log('reviewID', reviewId)
-        console.log('rating',rating)
-        console.log('jacks comment', comment)
         let reviewDispatch = dispatch(editReviewThunk(review, parseInt(reviewId)));
-        console.log('review after submit', review )
+
         if (reviewDispatch) {
             history.push(`/`)
         };

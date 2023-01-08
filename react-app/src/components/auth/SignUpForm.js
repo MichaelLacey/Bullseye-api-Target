@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
+  const [firstName, setFirstname] = useState('');
+  const [lastName, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -15,17 +16,20 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(firstName, lastName, email, password));
       if (data) {
         setErrors(data)
       }
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
+  const updateFirstName = (e) => {
+    setFirstname(e.target.value);
   };
 
+  const updateLastName = (e) => {
+    setLastname(e.target.value);
+  };
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -43,42 +47,62 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onSignUp} className='loginForm'>
+      <h1 id='loginH1'> Create your Bullseye account </h1>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>User Name</label>
+      <div className='inputDiv'>
+        {/* <label>First Name</label> */}
         <input
+        placeholder=' First Name'
+          className='inputs'
           type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
+          name='first_name'
+          onChange={updateFirstName}
+          value={firstName}
         ></input>
       </div>
-      <div>
-        <label>Email</label>
+      <div className='inputDiv'>
+        {/* <label>Last Name</label> */}
         <input
+        placeholder=' Last Name'
+          className='inputs'
+          type='text'
+          name='last_name'
+          onChange={updateLastName}
+          value={lastName}
+        ></input>
+      </div>
+      <div className='inputDiv'>
+        {/* <label>Email</label> */}
+        <input
+        placeholder=' Email'
+          className='inputs'
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
         ></input>
       </div>
-      <div>
-        <label>Password</label>
+      <div className='inputDiv'>
+        {/* <label>Password</label> */}
         <input
+        placeholder=' Password'
+          className='inputs'
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
         ></input>
       </div>
-      <div>
-        <label>Repeat Password</label>
+      <div className='inputDiv'>
+        {/* <label>Repeat Password</label> */}
         <input
+        placeholder=' Repeat Password'
+          className='inputs'
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
@@ -86,7 +110,8 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button type='submit' id='loginButton'>Sign Up</button>
+     <Link to='/login'> <p id='signUpPtag'> Or sign in</p></Link>
     </form>
   );
 };

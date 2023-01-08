@@ -9,6 +9,7 @@
     height: 32px;
     width: 252px;
     border-radius: 6px;
+    margin-bottom: 5%;
 }
 .productPageMainDiv{
     width: 80%;
@@ -54,6 +55,7 @@
     width: 252px;
     border-radius: 6px;
     cursor: not-allowed;
+    margin-bottom: 5%;
 }
 
 /* --- Reviews portion --- */

@@ -19,5 +19,11 @@
 .cartImg{
     width: 40px;
     height: 23px;
-    margin-right: 5%;
+    /* margin-right: 5%; */
+}
+#cartImgDiv {
+    /* margin-right: 3%; */
+}
+#loginH4 {
+    margin-left: 2%;
 }
