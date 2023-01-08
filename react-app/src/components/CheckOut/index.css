@@ -1,0 +1,29 @@
+.checkoutMainDiv{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3%;
+}
+#checkoutImg {  
+    width: 20%;
+    height: 20%;
+    align-items: center;
+
+}
+#imgDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.otherDiv > h2{
+    color:rgb(250,18,0);
+    font-weight: bold;
+}
+.otherDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}

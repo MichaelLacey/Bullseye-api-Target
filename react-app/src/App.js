@@ -15,6 +15,7 @@ import ProductPage from './components/ProductPage';
 import Cart from './components/Cart';
 import EditReview from './components/EditReview';
 import CreateReview from './components/CreateReview';
+import CheckOut from './components/CheckOut';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,10 +51,10 @@ function App() {
         <Route path='/' exact={true} >
           <HomePage />
         </Route>
-        <Route  path='/departments/:departmentId' exact={true}>
+        <Route path='/departments/:departmentId' exact={true}>
           <DepartmentPage />
         </Route>
-        <Route  path='/departments/:departmentId/:productId' exact={true}>
+        <Route path='/departments/:departmentId/:productId' exact={true}>
           <ProductPage />
         </Route>
         <ProtectedRoute path='/cart' exact={true} >
@@ -64,6 +65,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/create/review/:productId' exact={true} >
           <CreateReview />
+        </ProtectedRoute>
+        <ProtectedRoute path='/cart/order/check-out' exact={true} >
+          <CheckOut />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

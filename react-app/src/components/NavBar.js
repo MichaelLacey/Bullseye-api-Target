@@ -7,7 +7,6 @@ import './navbar.css'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
-  console.log('sessionuser', sessionUser)
   
   return (
     <nav className='navDiv'>
@@ -17,11 +16,11 @@ const NavBar = () => {
           <h4 className='navH4'>Home</h4>
         </NavLink>
       </div>
-      <div id='cartImgDiv'>
+      { sessionUser &&<div id='cartImgDiv'>
         <NavLink to='/cart' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
         <img className='cartImg' src='https://i1.wp.com/afriwestmedia.com/wp-content/uploads/2017/03/white-shopping-cart-icon.png?fit=300%2C300' alt='Pic'></img>
         </NavLink>
-      </div>
+      </div>}
 
       { !sessionUser && <div id='loginH4'>
         <NavLink to='/login' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>

@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import './index.css'
 import { getUsersCartThunk } from "../../store/cart";
 import { removeFromCartThunk } from "../../store/cart";
+import { useHistory } from "react-router-dom";
 
 export default function Cart() {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const cart = Object.values(useSelector(state => state.cart));
 
@@ -71,7 +73,7 @@ export default function Cart() {
                         <p>Total</p>
                         <p> ${total}</p>
                     </div>
-                        <button className="cartCheckout">Check out</button>
+                        <button className="cartCheckout" onClick={() => history.push('/cart/order/check-out')}>Check out</button>
                 </div>
 
             </div>
