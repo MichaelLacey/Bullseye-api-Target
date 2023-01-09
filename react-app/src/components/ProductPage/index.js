@@ -18,7 +18,7 @@ export default function ProductPage() {
     const product = Object.values(useSelector(state => state.products))[0];
     const department = Object.values(useSelector(state => state.departments));
     // Grab user of the session
-    const sessionUserObject = Object.values(useSelector(state => state.session));
+    const sessionUserObject = Object.values(useSelector(state => state.session))[0];
     const cart = Object.values(useSelector(state => state.cart));
     const reviews = Object.values(useSelector(state => state.reviews));
 
@@ -30,13 +30,14 @@ export default function ProductPage() {
     const cartArr = [];
     cart.forEach(ele => cartArr.push(ele.id));
 
+    console.log('session ===================', sessionUserObject)
     useEffect(() => {
+        if (sessionUserObject?.user) {
+            dispatch(getUsersCartThunk());
+        }
         dispatch(getProductThunk(productId));
         dispatch(getDepartmentThunk(departmentId));
         dispatch(getProductReviewsThunk(productId));
-        if (sessionUserObject.user) {
-            dispatch(getUsersCartThunk());
-        }
         return (() => dispatch(clearProductAction()));
     }, [dispatch, productId, departmentId]);
 
@@ -74,7 +75,9 @@ export default function ProductPage() {
                         <h3>  {reviews.length > 0 ? `Rating ★ ${avgRating}` : 'Be the first to review'} </h3>
                         <h3> Free shipping </h3>
                         <h3> This item isn't sold in stores </h3>
-                        {!cartArr.includes(product.id) && <button className='productAddCartBtn' onClick={() => dispatch(addToCartThunk(product.id))}> Add To Cart</button>}
+                        {/* If there is no session user signed it show the same button with a redirect onClick to tell them to log in */}
+                        {!sessionUserObject?.id && <button className='productAddCartBtn' onClick={() => { history.push('/login')}}> Add to cart </button>}
+                        {!cartArr.includes(product.id) && sessionUserObject?.id && <button className='productAddCartBtn' onClick={() => dispatch(addToCartThunk(product.id))}> Add To Cart</button>}
                         {cartArr.includes(product.id) && <button className="productInCartBtn">In cart</button>}
                         <button className='productAddCartBtn' onClick={() => createReview(product)}> Create A Review</button>
                     </div>

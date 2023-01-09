@@ -13,11 +13,10 @@ export default function CreateReview() {
     const dispatch = useDispatch();
     const history = useHistory();
     let sessionUserId = useSelector(state => state.session.user.id);
-    console.log('typeof', typeof sessionUserId, sessionUserId)
     // const review = Object.values(useSelector(state => state.reviews));
     const product = Object.values(useSelector(state => state.products));
-    let [comment, setComment] = useState('' || data.comment);
-    let [rating, setRating] = useState(1 || data.rating);
+    const [comment, setComment] = useState('');
+    const [rating, setRating] = useState(1);
     const [validationErrors, setValidationErrors] = useState([]);
     
     const handleSubmit = async(e) => {
@@ -36,10 +35,16 @@ export default function CreateReview() {
         let reviewDispatch = dispatch(createReviewThunk(review, data.id));
 
         if (reviewDispatch) {
-            history.push(`/departments/${data.department_id}/${data.id}`)
+            history.push(`/departments/${data.department_id}/${data.id}`);
         };
     };
-    
+
+    useEffect(() => {
+        const validationErrors = [];
+        if (!comment || comment.length < 3) validationErrors.push('Provide a comment longer than 3 characters');
+        setValidationErrors(validationErrors);
+    }, [comment]);
+    if (!product) return null;
     return (
         <form className='editReviewForm' onSubmit={handleSubmit}>
         <div className="imgDiv">
@@ -47,7 +52,7 @@ export default function CreateReview() {
         </div>
         <div className="formDiv">
         <h className='reviewH2'> Create your review for : </h>
-        <h5>{product[0].name}</h5>
+        <h5>{product[0]?.name}</h5>
         <h5>Write out your review</h5>
         <ul className='createReviewErrors'>
             {validationErrors.map((error, idx) => (
@@ -80,7 +85,6 @@ export default function CreateReview() {
             </select>
         </label>
         <button type='submit' className='editReviewButton' disabled={validationErrors.length > 0} > Submit  </button>
-        {/* <button className='deleteReviewButton' onClick={() => deleteReview(reviewId)}> Delete  </button> */}
         </div>
     </form>
 

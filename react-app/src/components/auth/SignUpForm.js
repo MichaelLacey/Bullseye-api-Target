@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -21,6 +21,13 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
+    const errors = [];
+    if (!firstName || firstName.length < 3) errors.push('Please enter a first name with at least 3 characters');
+    if (!lastName || lastName.length < 3) errors.push('Please enter a last name with at least 3 characters');/*  */
+    if (!email) errors.push('Please enter a valid email');
+    if (!password || password.length < 5) errors.push('Please provide a longer password')
+    if (password !== repeatPassword) errors.push('Passwords do not match')
+    setErrors(errors)
   };
 
   const updateFirstName = (e) => {
@@ -81,7 +88,7 @@ const SignUpForm = () => {
         <input
         placeholder=' Email'
           className='inputs'
-          type='text'
+          type='email'
           name='email'
           onChange={updateEmail}
           value={email}

@@ -1,7 +1,7 @@
 const GET_USERS_CART = 'get/cart'
 const ADD_TO_CART = 'add/cart'
 const DELETE_TO_CART = 'delete/cart'
-
+const CHECKOUT_CART = 'checkout/cart'
 
 
 /* ___________ A C T I O N S   ___________ */
@@ -27,7 +27,12 @@ export const deleteCartItem = (productId) => {
         productId
     };
 };
-
+// Checkout a cart 
+export const checkoutCartAction = () => {
+    return {
+        type: CHECKOUT_CART
+    };
+};
 
 
 /* ___________ T H U N K S   ___________ */
@@ -56,7 +61,11 @@ export const removeFromCartThunk = (productId) => async (dispatch) => {
 
     if (response.ok) dispatch(deleteCartItem(productId));
 };
-
+// Checkout the cart
+export const checkoutCartThunK = () => async (dispatch) => {
+    const response = await fetch(`/api/cart/checkout`);
+    if (response.ok) dispatch(checkoutCartAction)
+};
 
 /* ___________ R E D U C E R ___________ */
 const cartReducer = (state = {}, action) => {
@@ -75,6 +84,10 @@ const cartReducer = (state = {}, action) => {
         case DELETE_TO_CART:
             newState = { ...state }
             delete newState[action.productId]
+            return newState
+
+        case CHECKOUT_CART:
+            newState = {}
             return newState
 
         default:

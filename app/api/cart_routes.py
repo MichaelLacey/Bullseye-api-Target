@@ -52,3 +52,25 @@ def delete_cart_product(product_id):
             return jsonify('Product successfully deleted from cart.')
     # If there is no product that matches the product id
     return jsonify("Couldn't find that product in your cart.")
+
+# Checkout the cart, essentially delete all the items from the cart 
+@cart_routes.route( '/checkout' )
+@login_required
+def checkout_Cart():
+    users_products = User.query.get(current_user.id).products
+    user = User.query.get(current_user.id)
+
+    for product in users_products:
+        user.products.remove(product)
+        db.session.add(user)
+        db.session.commit()
+
+    user_products = User.query.get(current_user.id).products
+    userr = User.query.get(current_user.id)
+
+    for product in user_products:
+        userr.products.remove(product)
+        db.session.add(userr)
+        db.session.commit()
+
+    return jsonify('Cart has successfully been checked out.')

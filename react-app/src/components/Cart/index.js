@@ -4,6 +4,7 @@ import './index.css'
 import { getUsersCartThunk } from "../../store/cart";
 import { removeFromCartThunk } from "../../store/cart";
 import { useHistory } from "react-router-dom";
+import { checkoutCartThunK } from "../../store/cart";
 
 export default function Cart() {
     const dispatch = useDispatch();
@@ -26,6 +27,11 @@ export default function Cart() {
     useEffect(() => {
         dispatch(getUsersCartThunk());
     }, [dispatch]);
+
+    const checkout = () => {
+        dispatch(checkoutCartThunK());
+        history.push('/cart/order/check-out');
+    };
 
     return (
         <div className="mainPageCartDiv">
@@ -73,7 +79,7 @@ export default function Cart() {
                         <p>Total</p>
                         <p> ${total}</p>
                     </div>
-                        <button className="cartCheckout" onClick={() => history.push('/cart/order/check-out')}>Check out</button>
+                        <button className="cartCheckout" onClick={() => checkout()}>Check out</button>
                 </div>
 
             </div>

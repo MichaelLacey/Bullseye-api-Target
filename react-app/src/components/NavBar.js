@@ -7,33 +7,33 @@ import './navbar.css'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
-  
+
   return (
     <nav className='navDiv'>
-
+      
       <div>
         <NavLink to='/' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
           <h4 className='navH4'>Home</h4>
         </NavLink>
       </div>
-      { sessionUser &&<div id='cartImgDiv'>
+      {sessionUser && <div id='cartImgDiv'>
         <NavLink to='/cart' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
-        <img className='cartImg' src='https://i1.wp.com/afriwestmedia.com/wp-content/uploads/2017/03/white-shopping-cart-icon.png?fit=300%2C300' alt='Pic'></img>
+          <img className='cartImg' src='https://i1.wp.com/afriwestmedia.com/wp-content/uploads/2017/03/white-shopping-cart-icon.png?fit=300%2C300' alt='Pic'></img>
         </NavLink>
       </div>}
 
-      { !sessionUser && <div id='loginH4'>
+      {!sessionUser && <div id='loginH4'>
         <NavLink to='/login' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
           <h4 className='navH4'>Login</h4>
         </NavLink>
       </div>}
 
-      { !sessionUser && <div>
+      {!sessionUser && <div>
         <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
           <h4 className='navH4'>Sign Up</h4>
         </NavLink>
       </div>}
-      
+
 
       {sessionUser && <div className='navBtn'>
         <LogoutButton />
