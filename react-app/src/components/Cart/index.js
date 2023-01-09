@@ -29,8 +29,8 @@ export default function Cart() {
     }, [dispatch]);
 
     const checkout = () => {
-        dispatch(checkoutCartThunK());
         history.push('/cart/order/check-out');
+        dispatch(checkoutCartThunK());
     };
 
     return (

@@ -41,7 +41,7 @@ export default function CreateReview() {
 
     useEffect(() => {
         const validationErrors = [];
-        if (!comment || comment.length < 3) validationErrors.push('Provide a comment longer than 3 characters');
+        if (!comment || comment.length < 20) validationErrors.push('Provide a comment longer than 20 characters');
         setValidationErrors(validationErrors);
     }, [comment]);
     if (!product) return null;

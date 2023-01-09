@@ -43,14 +43,14 @@ export default function EditReview() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-       
+
         const review = {
             rating,
             comment,
 
         };
 
-    
+
         setComment('');
         setRating(1);
         let reviewDispatch = dispatch(editReviewThunk(review, parseInt(reviewId)));
@@ -81,7 +81,7 @@ export default function EditReview() {
                         type="text"
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
-                    // required
+                        required
                     />
                 </label>
                 <label>
