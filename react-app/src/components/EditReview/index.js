@@ -45,6 +45,7 @@ export default function EditReview() {
         e.preventDefault();
 
         const review = {
+            user_id:sessionUserId,
             rating,
             comment,
 

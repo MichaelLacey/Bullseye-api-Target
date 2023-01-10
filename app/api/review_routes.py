@@ -68,11 +68,13 @@ def delete_review(review_id):
 def edit_review(review_id):
     form = review_form()
     review = Review.query.get(review_id)
-    oldReview = review.to_dict()
+    # oldReview = review.to_dict()
     form['csrf_token'].data = request.cookies['csrf_token']
     data = form.data
-
+   
     if review and form.validate_on_submit():
+        # print(' THIS PRINT NEVER PRINTS?????????')
+        review.user_id = data['user_id']
         review.rating = data['rating']
         review.comment = data['comment']
         db.session.commit()
