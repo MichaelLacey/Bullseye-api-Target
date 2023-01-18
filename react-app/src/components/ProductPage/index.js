@@ -30,7 +30,7 @@ export default function ProductPage() {
     const cartArr = [];
     cart.forEach(ele => cartArr.push(ele.id));
 
-    console.log('session ===================', sessionUserObject)
+    
     useEffect(() => {
         if (sessionUserObject?.user) {
             dispatch(getUsersCartThunk());
@@ -92,7 +92,8 @@ export default function ProductPage() {
                         <h4 id="names"> {ele.first_name} {ele.last_name} </h4>
                         <p id="rating"> ★ {ele.rating} </p>
                         <p id="comment"> {ele.comment} </p>
-                        <button id="edit" onClick={() => reviewNav(ele)}>Edit / Delete</button>
+
+                        { sessionUserObject?.id === ele.user_id &&<button id="edit" onClick={() => reviewNav(ele)}>Edit / Delete</button>}
                     </div>
                 ))}
             </div>

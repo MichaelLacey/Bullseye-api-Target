@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './index.css'
-import { getUsersCartThunk } from "../../store/cart";
-import { removeFromCartThunk } from "../../store/cart";
+import { getUsersCartThunk, removeFromCartThunk, checkoutCartThunK  } from "../../store/cart";
 import { useHistory } from "react-router-dom";
-import { checkoutCartThunK } from "../../store/cart";
+
 
 export default function Cart() {
     const dispatch = useDispatch();
