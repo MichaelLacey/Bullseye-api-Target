@@ -10,35 +10,44 @@ const NavBar = () => {
 
   return (
     <nav className='navDiv'>
-      
-      <div>
-        <NavLink to='/' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
-          <h4 className='navH4'>Home</h4>
+
+      <div className="homeButton">
+        <NavLink to='/' exact={true} activeClassName='active' id='navLinkLogo' style={{ textDecoration: 'none' }}>
+          <i id='homeButton' class="fa-solid fa-bullseye"></i>
         </NavLink>
       </div>
-      {sessionUser && <div id='cartImgDiv'>
-        <NavLink to='/cart' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
-          <img className='cartImg' src='https://i1.wp.com/afriwestmedia.com/wp-content/uploads/2017/03/white-shopping-cart-icon.png?fit=300%2C300' alt='Pic'></img>
-        </NavLink>
-      </div>}
 
-      {!sessionUser && <div id='loginH4'>
-        <NavLink to='/login' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
-          <h4 className='navH4'>Login</h4>
-        </NavLink>
-      </div>}
+      <div className="otherNavBtns">
 
-      {!sessionUser && <div>
-        <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
-          <h4 className='navH4'>Sign Up</h4>
-        </NavLink>
-      </div>}
+        <div>
+          <NavLink to='/' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
+            <h4 className='navH4'>Home</h4>
+          </NavLink>
+        </div>
+
+        {sessionUser && <div id='cartImgDiv'>
+          <NavLink to='/cart' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
+            <img className='cartImg' src='https://i1.wp.com/afriwestmedia.com/wp-content/uploads/2017/03/white-shopping-cart-icon.png?fit=300%2C300' alt='Pic'></img>
+          </NavLink>
+        </div>}
+
+        {!sessionUser && <div id='loginH4'>
+          <NavLink to='/login' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
+            <h4 className='navH4'>Login</h4>
+          </NavLink>
+        </div>}
+
+        {!sessionUser && <div>
+          <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
+            <h4 className='navH4'>Sign Up</h4>
+          </NavLink>
+        </div>}
 
 
-      {sessionUser && <div className='navBtn'>
-        <LogoutButton />
-      </div>}
-
+        {sessionUser && <div id='logout' className='navBtn'>
+          <LogoutButton />
+        </div>}
+      </div>
 
     </nav >
   );
