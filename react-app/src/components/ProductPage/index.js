@@ -21,6 +21,15 @@ export default function ProductPage() {
     const sessionUserObject = Object.values(useSelector(state => state.session))[0];
     const cart = Object.values(useSelector(state => state.cart));
     const reviews = Object.values(useSelector(state => state.reviews));
+    console.log('reviews', reviews)
+
+    // Find if a user has a review for product then not show the review button
+    let reviewBoolean = true
+    reviews.forEach(ele => {
+        if (sessionUserObject?.id === ele.user_id){
+            reviewBoolean = false
+        };
+    });
 
     // Get the avg rating for each product by iterating through reviews  
     // adding the stars up and dividing by the length
@@ -79,7 +88,13 @@ export default function ProductPage() {
                         {!sessionUserObject?.id && <button className='productAddCartBtn' onClick={() => { history.push('/login')}}> Add to cart </button>}
                         {!cartArr.includes(product.id) && sessionUserObject?.id && <button className='productAddCartBtn' onClick={() => dispatch(addToCartThunk(product.id))}> Add To Cart</button>}
                         {cartArr.includes(product.id) && <button className="productInCartBtn">In cart</button>}
+
+                        { !reviewBoolean && 
+                        <button className='productAddCartBtnReview' onClick={() => createReview(product)}> Already have review</button>
+                        }
+                        { reviewBoolean && 
                         <button className='productAddCartBtn' onClick={() => createReview(product)}> Create A Review</button>
+                        }
                     </div>
 
                 </div>

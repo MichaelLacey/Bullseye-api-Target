@@ -11,6 +11,20 @@
     border-radius: 6px;
     margin-bottom: 5%;
 }
+.productAddCartBtnReview{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background-color: rgb(211,211,211);
+    color: rgb(255,255,255);
+    border: none;
+    font-weight: bold;
+    height: 32px;
+    width: 252px;
+    border-radius: 6px;
+    margin-bottom: 5%;
+    cursor: not-allowed;
+}
 .productPageMainDiv{
     width: 80%;
     margin: 0 auto;
