@@ -77,7 +77,7 @@ export default function Cart() {
 
                     <div className="total">
                         <p>Total</p>
-                        <p> ${Number(`${total}`).toFixed(2)}</p>
+                        <p> ${total}</p>
                     </div>
                         <button className="cartCheckout" onClick={() => checkout()}>Check out</button>
                 </div>
