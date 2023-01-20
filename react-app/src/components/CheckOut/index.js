@@ -1,10 +1,14 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { getUsersCartThunk } from "../../store/cart";
+import { useDispatch } from "react-redux";
 import './index.css'
 
 export default function CheckOut() {
+    const dispatch = useDispatch();
 
-
+    useEffect(() => {
+        dispatch(getUsersCartThunk());
+    }, [dispatch]);
 
     return (
         <div className="checkoutMainDiv">

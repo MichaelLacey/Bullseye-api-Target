@@ -2,29 +2,25 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDepartmentsThunk } from "../../store/department";
 import { getProductsThunk } from "../../store/product";
+import { getUsersCartThunk } from "../../store/cart";
 import { Link } from 'react-router-dom'
 import './index.css'
 
 export default function HomePage() {
     const dispatch = useDispatch();
 
+    const sessionUserObject = Object.values(useSelector(state => state.session))[0];
     const departmentsArr = Object.values(useSelector(state => state.departments));
     const products = Object.values(useSelector(state => state.products));
-    console.log('products', products)
+
 
     useEffect(() => {
         dispatch(getProductsThunk(1));
         dispatch(getDepartmentsThunk())
+        if (sessionUserObject?.user) {
+            dispatch(getUsersCartThunk());
+        }
     }, [dispatch]);
-
-
-    // <div className="product1">
-    //     <div>{products[4]?.name}</div>
-    //     <div className="productPriceHP">{products[4]?.price}</div>
-    //     <Link className="imgLingHp">
-    //         <img className="homepageImg" src={`${products[4]?.image_url1}`} alt='img'></img>
-    //     </Link>
-    // </div>
 
 
     return (

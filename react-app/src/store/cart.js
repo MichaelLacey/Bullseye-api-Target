@@ -2,7 +2,7 @@ const GET_USERS_CART = 'get/cart'
 const ADD_TO_CART = 'add/cart'
 const DELETE_TO_CART = 'delete/cart'
 const CHECKOUT_CART = 'checkout/cart'
-
+const CLEARPRODUCTCART = 'spot/clearProduct'
 
 /* ___________ A C T I O N S   ___________ */
 // Get cart items
@@ -34,6 +34,13 @@ export const checkoutCartAction = () => {
     };
 };
 
+// Clear state or empty it in the return of a useeffect so its empty upon leaving the component
+export const clearProductAction = () => {
+    return {
+      type: CLEARPRODUCTCART,
+    };
+  };
+
 
 /* ___________ T H U N K S   ___________ */
 
@@ -64,7 +71,8 @@ export const removeFromCartThunk = (productId) => async (dispatch) => {
 // Checkout the cart
 export const checkoutCartThunK = () => async (dispatch) => {
     const response = await fetch(`/api/cart/checkout`);
-    if (response.ok) dispatch(checkoutCartAction)
+    // if (response.ok) 
+    dispatch(checkoutCartAction)
 };
 
 /* ___________ R E D U C E R ___________ */
@@ -88,6 +96,9 @@ const cartReducer = (state = {}, action) => {
 
         case CHECKOUT_CART:
             newState = {}
+            return newState
+        
+        case CLEARPRODUCTCART:
             return newState
 
         default:

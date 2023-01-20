@@ -27,9 +27,9 @@ export default function Cart() {
         dispatch(getUsersCartThunk());
     }, [dispatch]);
 
-    const checkout = () => {
-        history.push('/cart/order/check-out');
-        dispatch(checkoutCartThunK());
+    const checkout = async() => {
+        const checkedout = dispatch(checkoutCartThunK());
+        if (checkedout) history.push('/cart/order/check-out');
     };
 
     return (
@@ -76,7 +76,7 @@ export default function Cart() {
 
                     <div className="total">
                         <p>Total</p>
-                        <p> ${total}</p>
+                        <p> ${Number(`${total}`).toFixed(2)}</p>
                     </div>
                         <button className="cartCheckout" onClick={() => checkout()}>Check out</button>
                 </div>
