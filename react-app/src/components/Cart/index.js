@@ -15,8 +15,9 @@ export default function Cart() {
     let sum = 0;
     cart.forEach(ele => sum += ele.price);
     
+    let total = 0
     let tax = sum * .08;
-    let total = sum + tax;
+    total = sum + tax;
     // Turn all of the variables into numbers that have commas in them
     sum = sum.toLocaleString(undefined, {maximumFractionDigits: 2})
     tax = tax.toLocaleString(undefined, {maximumFractionDigits: 2})
