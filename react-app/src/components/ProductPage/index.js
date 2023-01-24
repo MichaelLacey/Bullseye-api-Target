@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from 'react-router-dom'
 import { getProductThunk } from "../../store/product";
@@ -13,7 +13,7 @@ export default function ProductPage() {
     const history = useHistory();
     const { productId } = useParams();
     const { departmentId } = useParams();
-
+    const [loading, setLoading] = useState(false)
 
     const product = Object.values(useSelector(state => state.products))[0];
     const department = Object.values(useSelector(state => state.departments));
@@ -21,12 +21,12 @@ export default function ProductPage() {
     const sessionUserObject = Object.values(useSelector(state => state.session))[0];
     const cart = Object.values(useSelector(state => state.cart));
     const reviews = Object.values(useSelector(state => state.reviews));
-    console.log('reviews', reviews)
+   
 
     // Find if a user has a review for product then not show the review button
     let reviewBoolean = true
     reviews.forEach(ele => {
-        if (sessionUserObject?.id === ele.user_id){
+        if (sessionUserObject?.id === ele.user_id) {
             reviewBoolean = false
         };
     });
@@ -39,7 +39,11 @@ export default function ProductPage() {
     const cartArr = [];
     cart.forEach(ele => cartArr.push(ele.id));
 
-    
+    // Have something give some extra time to load all of our images and data
+    useEffect(() => {
+        setTimeout(() => setLoading(true), 250)
+    }, []);
+
     useEffect(() => {
         if (sessionUserObject?.user) {
             dispatch(getUsersCartThunk());
@@ -59,10 +63,12 @@ export default function ProductPage() {
 
     if (!product) return null;
 
+
     return (
         <div className="productPageMainDiv">
-
+            {loading && 
             <div className="proudctsPageMapped">
+
                 <div className="departmentAndProductName">
                     <h5>Bullsye/{`${department[2]}`}</h5>
                     <h1>{product.name}</h1>
@@ -85,33 +91,38 @@ export default function ProductPage() {
                         <h3> Free shipping </h3>
                         <h3> This item isn't sold in stores </h3>
                         {/* If there is no session user signed it show the same button with a redirect onClick to tell them to log in */}
-                        {!sessionUserObject?.id && <button className='productAddCartBtn' onClick={() => { history.push('/login')}}> Add to cart </button>}
+                        {!sessionUserObject?.id && <button className='productAddCartBtn' onClick={() => { history.push('/login') }}> Add to cart </button>}
                         {!cartArr.includes(product.id) && sessionUserObject?.id && <button className='productAddCartBtn' onClick={() => dispatch(addToCartThunk(product.id))}> Add To Cart</button>}
                         {cartArr.includes(product.id) && <button className="productInCartBtn">In cart</button>}
 
-                        { !reviewBoolean && 
-                        <button className='productAddCartBtnReview' onClick={() => createReview(product)}> Already have review</button>
+                        {!reviewBoolean &&
+                            <button className='productAddCartBtnReview' onClick={() => createReview(product)}> Already have review</button>
                         }
-                        { reviewBoolean && 
-                        <button className='productAddCartBtn' onClick={() => createReview(product)}> Create A Review</button>
+                        {reviewBoolean &&
+                            <button className='productAddCartBtn' onClick={() => createReview(product)}> Create A Review</button>
                         }
                     </div>
 
                 </div>
             </div>
+            }
 
+                {loading && 
             <div className="reviewsMainDiv">
                 {reviews && reviews.map(ele => (
-
+                    
                     <div className="review">
+
                         <h4 id="names"> {ele.first_name} {ele.last_name} </h4>
                         <p id="rating"> ★ {ele.rating} </p>
                         <p id="comment"> {ele.comment} </p>
 
-                        { sessionUserObject?.id === ele.user_id &&<button id="edit" onClick={() => reviewNav(ele)}>Edit / Delete</button>}
+                        {sessionUserObject?.id === ele.user_id && <button id="edit" onClick={() => reviewNav(ele)}>Edit / Delete</button>}
                     </div>
                 ))}
             </div>
+            }
         </div>
+
     );
 };

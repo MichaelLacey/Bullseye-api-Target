@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams, useHistory } from 'react-router-dom'
 import './index.css';
@@ -10,6 +10,7 @@ export default function DepartmentPage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { departmentId } = useParams();
+    const [ loading, setLoading ] = useState(false)
 
     const productsArr = Object.values(useSelector(state => state.products));
     // Grab user of the session
@@ -19,6 +20,11 @@ export default function DepartmentPage() {
     const cartArr = [];
     cart.forEach(ele => cartArr.push(ele.id));
     
+    // Have something give some extra time to load all of our images and data
+    useEffect(() => {
+        setTimeout(() => setLoading(true), 250)
+      }, []);
+
     useEffect(() => {
         dispatch(getProductsThunk(departmentId));
         // If we have a user lets grab that users cart itmes
@@ -30,6 +36,7 @@ export default function DepartmentPage() {
 if (!productsArr.length) return null;
 return (
     <div className="departmentMainDiv">
+    {loading &&
 
         <div className="products">
 
@@ -49,6 +56,7 @@ return (
             ))}
 
         </div>
+            }
     </div>
 )  
 }

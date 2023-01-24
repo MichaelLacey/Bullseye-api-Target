@@ -28,7 +28,7 @@
 }
 .homeButton{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     width: 100px;
     height: 50px;
 }
