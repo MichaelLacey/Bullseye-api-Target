@@ -1,0 +1,51 @@
+.allCarousel {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1); */
+  }
+
+  .arrow-button-left {
+    position: relative;
+    background-color: transparent;
+    border: None;
+  }
+  
+  .arrow-button-left::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 35px;
+    border-color: transparent rgb(204,13,0) transparent transparent;
+    border-style: solid;
+    left: -80px;
+    bottom: -40px;
+  }
+  .arrow-button-right {
+    position: relative;
+    background-color: transparent;
+    border: None;
+  }
+  
+  .arrow-button-right::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 35px;
+    border-color: transparent transparent transparent rgb(204,13,0);
+    border-style: solid;
+    right: -80px;
+    bottom: -40px;
+  }
+
+  .sliderImages {
+    width: 25vw;
+    height:25vw;
+    border-radius: 10px;
+    box-shadow: 0 0 50px 50px white inset;
+    /* object-fit: cover */
+  }

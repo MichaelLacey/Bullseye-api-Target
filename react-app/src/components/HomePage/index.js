@@ -5,6 +5,7 @@ import { getProductsThunk } from "../../store/product";
 import { getUsersCartThunk } from "../../store/cart";
 import { Link } from 'react-router-dom'
 import './index.css'
+import Slider from "../Carousel";
 
 export default function HomePage() {
     const dispatch = useDispatch();
@@ -26,6 +27,8 @@ export default function HomePage() {
     return (
         <div className="homepageMainDiv">
             <h1 id="hpH1"> Hottest Electronics </h1>
+            <Slider />
+            {/* 
 
             <div className="layer1">
 
@@ -66,7 +69,7 @@ export default function HomePage() {
                     </Link>
                 </div>
 
-            </div>
+            </div> */}
 
             <h1 id="catH2"> Departments </h1>
             <div className="departments">
