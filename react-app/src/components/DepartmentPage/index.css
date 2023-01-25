@@ -58,8 +58,10 @@
     margin: 0 0 2% 0;
     overflow-y: auto;
     overflow-x: none;
+    color: rgb(51,51,51);
 }
-.productsArrPrice{
+.productsArrPrice{ 
+    color: rgb(51,51,51);
     margin: 0 0 2% 0;
     font-weight: bold;
 }
