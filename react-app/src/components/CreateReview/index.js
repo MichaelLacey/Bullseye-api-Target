@@ -1,6 +1,6 @@
 import './index.css';
 import { useEffect, useState } from 'react';
-import { useParams, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import { getOneReviewThunk } from '../../store/review';
 // import { getProductThunk } from '../../store/product';

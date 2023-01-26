@@ -96,7 +96,7 @@ export default function ProductPage() {
                         {cartArr.includes(product.id) && <button className="productInCartBtn">In cart</button>}
 
                         {!reviewBoolean &&
-                            <button className='productAddCartBtnReview' onClick={() => createReview(product)}> Already have review</button>
+                            <button className='productAddCartBtnReview'> Already have review</button>
                         }
                         {reviewBoolean &&
                             <button className='productAddCartBtn' onClick={() => createReview(product)}> Create A Review</button>

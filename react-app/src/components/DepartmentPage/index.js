@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams, useHistory } from 'react-router-dom'
 import './index.css';
 import { getProductsThunk } from "../../store/product";
-import { addToCartThunk, getCartItems } from "../../store/cart";
+import { addToCartThunk } from "../../store/cart";
 import { getUsersCartThunk } from "../../store/cart";
 
 export default function DepartmentPage() {

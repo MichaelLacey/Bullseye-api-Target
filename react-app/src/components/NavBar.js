@@ -1,5 +1,5 @@
-
-import React from 'react';
+import CategoryDropdown from './CatergoryDropdown';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
@@ -7,6 +7,9 @@ import './navbar.css'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
+  const [ openMenu, setOpenMenu ] = useState(false);
+
+ 
 
   return (
     <nav className='navDiv'>
@@ -16,6 +19,14 @@ const NavBar = () => {
           <i id='homeButton' class="fa-solid fa-bullseye"></i>
         </NavLink>
       </div>
+      
+      <div className="categories"> 
+        <h4 onClick={() => setOpenMenu((prev) => !prev)} id='categoryH4'>Categories</h4>
+      {openMenu && 
+        <CategoryDropdown setOpenMenu={setOpenMenu} openMenu={openMenu}/>
+      }
+      </div>
+
 
       <div className="otherNavBtns">
 

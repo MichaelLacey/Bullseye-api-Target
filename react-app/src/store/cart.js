@@ -70,8 +70,7 @@ export const removeFromCartThunk = (productId) => async (dispatch) => {
 };
 // Checkout the cart
 export const checkoutCartThunK = () => async (dispatch) => {
-    const response = await fetch(`/api/cart/checkout`);
-    // if (response.ok) 
+    await fetch(`/api/cart/checkout`);
     dispatch(checkoutCartAction)
 };
 

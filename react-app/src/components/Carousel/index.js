@@ -43,7 +43,7 @@ return (
       <img
       className='sliderImages'
       src={products[currentIndex]?.image_url1}
-      alt="image description for screen readers"
+      alt="description for screen readers"
       onError={e => { e.currentTarget.src ="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"; }}
     />
       </NavLink>
