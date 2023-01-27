@@ -9,7 +9,7 @@ import Slider from "../Carousel";
 
 export default function HomePage() {
     const dispatch = useDispatch();
-
+    const [loading, setLoading] = useState(false)
     const sessionUserObject = Object.values(useSelector(state => state.session))[0];
     const departmentsArr = Object.values(useSelector(state => state.departments));
 
@@ -20,16 +20,19 @@ export default function HomePage() {
         if (sessionUserObject?.user) {
             dispatch(getUsersCartThunk());
         }
+        setTimeout(() => setLoading(true), 550)
     }, [dispatch]);
 
 
     return (
+
         <div className="homepageMainDiv">
             <h1 id="hpH1"> Hottest Electronics </h1>
             {/* Carousel Component*/}
-            <Slider />
+            {loading && <Slider />}
 
             <h1 id="catH2"> Departments </h1>
+            {loading && 
             <div className="departments">
                 {departmentsArr && departmentsArr.map(ele => (
                     <Link className='linkClass' key={`a${ele.id}`} style={{ textDecoration: 'none' }} to={`/departments/${ele.id}`}>
@@ -40,7 +43,9 @@ export default function HomePage() {
                     </Link>
                 ))}
 
+
             </div>
+            }
         </div>
     )
 }
