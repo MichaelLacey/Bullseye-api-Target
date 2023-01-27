@@ -20,11 +20,14 @@
 .navBtn{
     margin-right: 1%;
     margin-left: 2.5%;
+    color: black;
 }
 .cartImg{
-    margin-top: 40%;
+    margin-top: 10%;
     width: 40px;
     height: 23px;
+    display: flex;
+    align-items: center;
 }
 .homeButton{
     display: flex;
@@ -59,4 +62,39 @@
     align-items: center;
     justify-content: center;
     border-radius: 10%;
+}
+#rightsideMenu{
+    margin-left: 50%;
+    margin-right: 50%;
+    color: white;
+}
+
+.dropdownMainDiv2{
+    position: absolute;
+    background-color: white;
+    right: 1%;
+    top: 5.3%;
+}
+.dropdownUl2{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    position: relative;
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
+    width: 25vh;
+    height: fit-content;
+    text-align: center;
+}
+.dropdownUl2 > li {
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid lightgrey;
+    height: 45px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.dropdownUl2 > li:hover {
+    text-decoration: underline;
 }

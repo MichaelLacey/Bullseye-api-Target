@@ -3,13 +3,15 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import ProfileDropdown from './ProfileDropdown';
 import './navbar.css'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
-  const [ openMenu, setOpenMenu ] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu2, setOpenMenu2] = useState(false);
 
- 
+
 
   return (
     <nav className='navDiv'>
@@ -19,22 +21,22 @@ const NavBar = () => {
           <i id='homeButton' class="fa-solid fa-bullseye"></i>
         </NavLink>
       </div>
-      
-      <div className="categories"> 
+
+      <div className="categories">
         <h4 onClick={() => setOpenMenu((prev) => !prev)} id='categoryH4'>Categories</h4>
-      {openMenu && 
-        <CategoryDropdown setOpenMenu={setOpenMenu} openMenu={openMenu}/>
-      }
+        {openMenu &&
+          <CategoryDropdown setOpenMenu={setOpenMenu} openMenu={openMenu} />
+        }
       </div>
 
 
       <div className="otherNavBtns">
 
-        <div>
+        {/* <div>
           <NavLink to='/' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
             <h4 className='navH4'>Home</h4>
           </NavLink>
-        </div>
+        </div> */}
 
         {sessionUser && <div id='cartImgDiv'>
           <NavLink to='/cart' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
@@ -42,21 +44,29 @@ const NavBar = () => {
           </NavLink>
         </div>}
 
-        {!sessionUser && <div id='loginH4'>
+        {/* <div className="rightsideMenu"> */}
+          <i id="rightsideMenu" class="fa-regular fa-user fa-2x" onClick={() => setOpenMenu2((prev) => !prev)}></i>
+        {openMenu2 &&
+          <ProfileDropdown setOpenMenu2={setOpenMenu2} openMenu2={openMenu2} />
+          }
+
+        {/* </div> */}
+
+        {/* {!sessionUser && <div id='loginH4'>
           <NavLink to='/login' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
             <h4 className='navH4'>Login</h4>
           </NavLink>
-        </div>}
+        </div>} */}
 
-        {!sessionUser && <div>
+        {/* {!sessionUser && <div>
           <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
             <h4 className='navH4'>Sign Up</h4>
           </NavLink>
-        </div>}
+        </div>} */}
 
 
         {sessionUser && <div id='logout' className='navBtn'>
-          <LogoutButton />
+          {/* <LogoutButton /> */}
         </div>}
       </div>
 

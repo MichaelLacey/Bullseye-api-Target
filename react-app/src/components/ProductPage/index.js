@@ -41,7 +41,7 @@ export default function ProductPage() {
 
     // Have something give some extra time to load all of our images and data
     useEffect(() => {
-        setTimeout(() => setLoading(true), 250)
+        setTimeout(() => setLoading(true), 550)
     }, []);
 
     useEffect(() => {
