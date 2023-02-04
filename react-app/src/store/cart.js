@@ -57,8 +57,8 @@ export const addToCartThunk = (productId) => async (dispatch) => {
 
     if (response.ok) {
         const product = await response.json();
-        dispatch(addCartItem(product[product.length - 1]))
-        return product
+        dispatch(addCartItem(product[product.length - 1]));
+        return product;
     };
 };
 
@@ -71,7 +71,7 @@ export const removeFromCartThunk = (productId) => async (dispatch) => {
 // Checkout the cart
 export const checkoutCartThunK = () => async (dispatch) => {
     await fetch(`/api/cart/checkout`);
-    dispatch(checkoutCartAction)
+    dispatch(checkoutCartAction);
 };
 
 /* ___________ R E D U C E R ___________ */

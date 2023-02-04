@@ -6,7 +6,7 @@
 .cartDiv {
     box-shadow:  2px 2px 30px rgba(0, 0, 0, 0.1);
     /* box-shadow: inset 2px 2px 30px rgba(0, 0, 0, 0.1); */
-    width: 60%;
+    width: 65%;
 }
 
 .cartMapped {
@@ -25,6 +25,7 @@
 
 .cartNameH4 {
     font-weight: lighter;
+    width: 40%;
 }
 
 .deleteProduct {
@@ -100,4 +101,20 @@
     height: 50px;
     border-radius: 6px;
     width: 100%;
+}
+.cartCheckout:hover{
+    background-color: #AA0000;
+}
+#saveForLaterBtn{
+    height: 35px;
+    width: 15%;
+    margin-top: 1%;
+    margin-right: 1%;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 12px;
+    border-color: lightgray;
+}
+#saveForLaterBtn:hover{
+    background-color: lightgray;
 }

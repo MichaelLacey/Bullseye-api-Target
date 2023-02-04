@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import './index.css'
 import { getUsersCartThunk, removeFromCartThunk, checkoutCartThunK  } from "../../store/cart";
 import { useHistory } from "react-router-dom";
+import { getWishlistThunk } from "../../store/wishlist";
 
 
 export default function Cart() {
@@ -10,7 +11,7 @@ export default function Cart() {
     const history = useHistory();
 
     const cart = Object.values(useSelector(state => state.cart));
-
+    const wishlist = Object.values(useSelector(state => state.wishlist))
     // Get the sum of every item in the cart
     let sum = 0;
     cart.forEach(ele => sum += ele.price);
@@ -26,6 +27,7 @@ export default function Cart() {
     
     useEffect(() => {
         dispatch(getUsersCartThunk());
+        dispatch(getWishlistThunk());
     }, [dispatch]);
 
     const checkout = async() => {
@@ -50,6 +52,7 @@ export default function Cart() {
                             <h4 key={`b${ele.id}`} className='cartNameH4'>{ele.name}</h4>
                             <h4 className="cartPrice" key={`c${ele.id}`}>${Number(ele.price).toLocaleString(undefined, {maximumFractionDigits: 2})}</h4>
                             <h4 className="deleteProduct" onClick={() => dispatch(removeFromCartThunk(ele.id))} key={`d${ele.id}`}> X </h4>
+                            <button id="saveForLaterBtn">Save for later</button>
 
                         </div>
                     ))}

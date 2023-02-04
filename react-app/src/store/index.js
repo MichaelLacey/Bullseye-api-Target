@@ -5,13 +5,15 @@ import departmentsReducer from './department';
 import productsReducer from './product';
 import cartReducer from './cart';
 import reviewsReducer from './review';
+import wishlistReducer from './wishlist';
 
 const rootReducer = combineReducers({
   session,
-  departments:departmentsReducer,
+  departments: departmentsReducer,
   products: productsReducer,
   cart: cartReducer,
-  reviews: reviewsReducer
+  reviews: reviewsReducer,
+  wishlist: wishlistReducer
 });
 
 
