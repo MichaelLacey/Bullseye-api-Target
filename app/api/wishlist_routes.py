@@ -28,12 +28,17 @@ def add_to_list(product_id):
 
 
 # Remove a product from the wishlist
-@wishlist_routes.route('/deleteProduct/<int:wishlist_id>', methods=['DELETE'])
-@login_required
-def remove_from_list(wishlist_id):
-    item = Wishlist.query.get(wishlist_id)
-    if not item:
+@wishlist_routes.route('/deleteProduct/<int:product_id>', methods=['DELETE'])
+# @login_required
+def remove_from_list(product_id):
+    items = Wishlist.query.filter(Wishlist.user_id == current_user.id and Wishlist.product_id == product_id).all()
+
+    if not items:
         return { 'Errors': [ 'That item on the wishlist does not exist. '] }, 401
-    db.session.delete( item )
-    db.session.commit()
-    return jsonify('Successfully removed that product from the list.')
+
+    for product in items:
+       if product_id == product.product_id:
+        db.session.delete(product)
+        db.session.commit()
+        return jsonify('Successfully removed that product from the list.')
+    

@@ -38,6 +38,9 @@
     height: 32px;
     border-radius: 6px;
 }
+.deptAddCartBtn:hover{
+    background-color: #AA0000;
+}
 .deptInCartBtn{
     display: flex;
     justify-content: center; 

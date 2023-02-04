@@ -33,7 +33,6 @@ export const deleteFromWishlistAction = (productId) => {
 export const getWishlistThunk = () => async (dispatch) => {
     const response = await fetch('/api/wishlist/');
     const products = await response.json();
-    console.log('response', products)
     dispatch(getWishlistAction(products));
 };
 
@@ -43,7 +42,6 @@ export const addToWishlistThunk = (productId) => async (dispatch) => {
 
     if (response.ok) {
         const product = await response.json();
-        console.log('product in add to wihlist thunk :', product);
         dispatch(addToWishlistAction(product));
     };
 };
@@ -51,7 +49,6 @@ export const addToWishlistThunk = (productId) => async (dispatch) => {
 // Delete from wishlist 
 export const deleteFromWishlistThunk = (wishlistId) => async (dispatch) => {
     const response = await fetch(`/api/wishlist/deleteProduct/${wishlistId}`, { method: 'DELETE' });
-    console.log('response from delete from wishlist ', response);
     if (response.ok) dispatch(deleteFromWishlistAction(wishlistId));
 };
 

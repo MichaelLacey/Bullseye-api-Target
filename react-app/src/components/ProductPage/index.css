@@ -11,6 +11,9 @@
     border-radius: 6px;
     margin-bottom: 5%;
 }
+.productAddCartBtn:hover{
+    background-color: #AA0000;
+}
 .productAddCartBtnReview{
     display: flex;
     justify-content: center; 

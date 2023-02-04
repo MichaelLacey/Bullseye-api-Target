@@ -1,11 +1,11 @@
 .mainPageCartDiv {
     width: 80%;
     margin: 0 auto;
+    /* display: flex; */
 }
 
 .cartDiv {
     box-shadow:  2px 2px 30px rgba(0, 0, 0, 0.1);
-    /* box-shadow: inset 2px 2px 30px rgba(0, 0, 0, 0.1); */
     width: 65%;
 }
 
@@ -117,4 +117,42 @@
 }
 #saveForLaterBtn:hover{
     background-color: lightgray;
+}
+
+/* Save for later component  */
+.saveForLater {
+    margin-top: 5%;
+}
+#h4Later {
+    border-bottom: 1px solid #AA0000;
+    width: 62%;
+}
+
+.wishlistMapped{
+    display: flex;
+    box-shadow:  2px 2px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1%;
+    height: 12vh;
+    width: 62%;
+}
+
+.cartPriceWishlist {
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: 1%;
+}
+#wishlistAddCart{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background-color: rgb(204,0,0);
+    color: rgb(255,255,255);
+    border: none;
+    font-weight: bold;
+    height: 32px; 
+    border-radius: 6px;
+}
+#wishlistAddCart:hover{
+    background-color: #AA0000;
 }
