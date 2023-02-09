@@ -22,21 +22,17 @@ const NavBar = () => {
         </NavLink>
       </div>
 
-      <div className="categories">
-        <h4 onClick={() => setOpenMenu((prev) => !prev)} id='categoryH4'>Categories</h4>
-        {openMenu &&
-          <CategoryDropdown setOpenMenu={setOpenMenu} openMenu={openMenu} />
-        }
-      </div>
+
+      <div className='categoriesHome'>Bullsye</div>
 
 
       <div className="otherNavBtns">
-
-        {/* <div>
-          <NavLink to='/' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
-            <h4 className='navH4'>Home</h4>
-          </NavLink>
-        </div> */}
+        <div className="categories">
+          <h4 onClick={() => setOpenMenu((prev) => !prev)} id='categoryH4'>Categories</h4>
+          {openMenu &&
+            <CategoryDropdown setOpenMenu={setOpenMenu} openMenu={openMenu} />
+          }
+        </div>
 
         {sessionUser && <div id='cartImgDiv'>
           <NavLink to='/cart' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
@@ -44,29 +40,15 @@ const NavBar = () => {
           </NavLink>
         </div>}
 
-        {/* <div className="rightsideMenu"> */}
-          <i id="rightsideMenu" class="fa-regular fa-user fa-2x" onClick={() => setOpenMenu2((prev) => !prev)}></i>
+
+        <i id="rightsideMenu" class="fa-regular fa-user fa-2x" onClick={() => setOpenMenu2((prev) => !prev)}></i>
         {openMenu2 &&
           <ProfileDropdown setOpenMenu2={setOpenMenu2} openMenu2={openMenu2} />
-          }
-
-        {/* </div> */}
-
-        {/* {!sessionUser && <div id='loginH4'>
-          <NavLink to='/login' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
-            <h4 className='navH4'>Login</h4>
-          </NavLink>
-        </div>} */}
-
-        {/* {!sessionUser && <div>
-          <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
-            <h4 className='navH4'>Sign Up</h4>
-          </NavLink>
-        </div>} */}
+        }
 
 
         {sessionUser && <div id='logout' className='navBtn'>
-          {/* <LogoutButton /> */}
+
         </div>}
       </div>
 

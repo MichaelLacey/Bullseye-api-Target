@@ -20,9 +20,9 @@ export default function Cart() {
     let tax = sum * .08;
     total = sum + tax;
     // Turn all of the variables into numbers that have commas in them
-    sum = sum.toLocaleString(undefined, { maximumFractionDigits: 2 });
-    tax = tax.toLocaleString(undefined, { maximumFractionDigits: 2 });
-    total = total.toLocaleString(undefined, { maximumFractionDigits: 2 });
+    sum = sum.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+    tax = tax.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+    total = total.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 });
 
     useEffect(() => {
         dispatch(getUsersCartThunk());
@@ -41,8 +41,8 @@ export default function Cart() {
     };
 
     const laterToCart = (ele) => {
-        dispatch(deleteFromWishlistThunk(ele.id))
-        dispatch(addToCartThunk(ele.id))
+        dispatch(deleteFromWishlistThunk(ele.id));
+        dispatch(addToCartThunk(ele.id));
     }
 
     return (

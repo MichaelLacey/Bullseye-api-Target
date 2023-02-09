@@ -1,7 +1,6 @@
 .mainPageCartDiv {
     width: 80%;
     margin: 0 auto;
-    /* display: flex; */
 }
 
 .cartDiv {
@@ -121,6 +120,7 @@
 
 /* Save for later component  */
 .saveForLater {
+    height: 40VH;
     margin-top: 5%;
 }
 #h4Later {
@@ -128,11 +128,17 @@
     width: 62%;
 }
 
+.wishlistNameH4 {
+    margin: 0px;
+    width: 85%;
+}
+
 .wishlistMapped{
     display: flex;
     box-shadow:  2px 2px 30px rgba(0, 0, 0, 0.1);
     margin-bottom: 1%;
-    height: 12vh;
+    height: 15vh;
+    /* height: 40%; */
     width: 62%;
 }
 
@@ -141,7 +147,15 @@
     justify-content: space-between;
     margin-left: auto;
     margin-right: 1%;
+    /* margin-left: 0%; */
 }
+.nameAndCartButton{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 #wishlistAddCart{
     display: flex;
     justify-content: center; 
@@ -150,7 +164,9 @@
     color: rgb(255,255,255);
     border: none;
     font-weight: bold;
-    height: 32px; 
+    height: 25%; 
+    width: 10vw;
+    margin: 0px;
     border-radius: 6px;
 }
 #wishlistAddCart:hover{

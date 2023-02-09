@@ -1,7 +1,7 @@
 .dropdownMainDiv {
     position: absolute;
     left: -40%;
-    top: 113%;
+    top: 125%;
     background-color: white;
 }
 .dropdownUl{
@@ -23,6 +23,7 @@
     display: flex;
     width: 100%;
     align-items: center;
+    margin-left: 2%;
 }
 .dropdownUl > li:hover {
     text-decoration: underline;
