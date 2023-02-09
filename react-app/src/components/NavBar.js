@@ -1,12 +1,13 @@
 import CategoryDropdown from './CatergoryDropdown';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import ProfileDropdown from './ProfileDropdown';
 import './navbar.css'
 
 const NavBar = () => {
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user)
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenu2, setOpenMenu2] = useState(false);
@@ -23,7 +24,7 @@ const NavBar = () => {
       </div>
 
 
-      <div className='categoriesHome'>Bullsye</div>
+      <div className='categoriesHome' onClick={() => history.push('/')}>Bullseye</div>
 
 
       <div className="otherNavBtns">

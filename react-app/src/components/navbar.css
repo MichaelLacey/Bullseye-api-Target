@@ -75,6 +75,7 @@
     border-radius: 10%;
     font-size: larger;
     color: white;
+    cursor: pointer;
 }
 #rightsideMenu{
     margin-left: 50%;
